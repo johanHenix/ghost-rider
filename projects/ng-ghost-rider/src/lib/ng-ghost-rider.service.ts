@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class NgGhostRiderService implements OnDestroy {
+export class GhostRiderService implements OnDestroy {
   private readonly _subs: Subscription[] = [];
 
   constructor() {

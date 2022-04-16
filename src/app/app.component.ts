@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgGhostRiderService } from 'ng-ghost-rider';
+import { GhostRiderService } from 'ng-ghost-rider';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'ghost-rider';
 
   constructor(
-    private readonly _ghostRiderService: NgGhostRiderService,
+    private readonly _ghostRiderService: GhostRiderService,
   ) { }
 }
