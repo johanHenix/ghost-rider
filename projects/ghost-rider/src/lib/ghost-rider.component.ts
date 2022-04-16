@@ -7,9 +7,7 @@ import { GhostRiderService } from './ghost-rider.service';
     <p>
       ghost-rider works!
     </p>
-  `,
-  styles: [
-  ]
+  `
 })
 export class GhostRiderComponent implements OnInit {
 
