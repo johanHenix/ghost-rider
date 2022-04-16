@@ -17,7 +17,8 @@ export class AppComponent implements AfterViewInit {
     this._ghostRiderService.start(
       'tour',
       [
-        new GhostRiderStep('step2'),
+        new GhostRiderStep('firstStep'),
+        new GhostRiderStep('secondStep'),
       ]
     );
   }
