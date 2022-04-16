@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <p>
       ng-ghost-rider works!
+      13
     </p>
   `,
   styles: [
