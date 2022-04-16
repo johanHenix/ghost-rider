@@ -1,5 +1,5 @@
 {
-  "name": "ghost-rider",
+  "name": "ghost-ride",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~12.1.0-",
     "@angular/common": "~12.1.0-",
