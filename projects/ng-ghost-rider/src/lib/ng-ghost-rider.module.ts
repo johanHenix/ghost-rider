@@ -1,15 +1,19 @@
+import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { PortalModule } from '@angular/cdk/portal';
-import { NgGhostRiderComponent } from './ng-ghost-rider.component';
+import { GhostRiderStepComponent } from './components/ghost-rider-step.component';
+import { GhostRiderStepAdvanceDirective } from './directives/ghost-rider-step-advance.directive';
 import { GhostRiderStepDirective } from './directives/ghost-rider-step.directive';
+import { NgGhostRiderComponent } from './ng-ghost-rider.component';
 
 const DIRECTIVES = [
   GhostRiderStepDirective,
+  GhostRiderStepAdvanceDirective,
 ];
 
 const COMPONENTS = [
   NgGhostRiderComponent,
+  GhostRiderStepComponent,
 ];
 
 @NgModule({
