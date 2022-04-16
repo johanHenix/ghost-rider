@@ -11,6 +11,12 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "paths": {
+      "ng-ghost-rider": [
+        "dist/ng-ghost-rider/ng-ghost-rider",
+        "dist/ng-ghost-rider"
+      ]
+    },
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,

@@ -105,6 +105,37 @@
           }
         }
       }
+    },
+    "ng-ghost-rider": {
+      "projectType": "library",
+      "root": "projects/ng-ghost-rider",
+      "sourceRoot": "projects/ng-ghost-rider/src",
+      "prefix": "ghost",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-ghost-rider/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-ghost-rider/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-ghost-rider/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-ghost-rider/src/test.ts",
+            "tsConfig": "projects/ng-ghost-rider/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-ghost-rider/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "ghost-rider"
