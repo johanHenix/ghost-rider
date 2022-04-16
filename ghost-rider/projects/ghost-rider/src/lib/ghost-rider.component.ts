@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GhostRiderService } from './ghost-rider.service';
 
 @Component({
   selector: 'lib-ghost-rider',
@@ -12,9 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GhostRiderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly _service: GhostRiderService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public start(): void {
+    this._service.start();
   }
 
 }

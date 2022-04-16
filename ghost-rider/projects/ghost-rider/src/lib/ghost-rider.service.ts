@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class GhostRiderService {
 
   constructor() { }
+
+  public start(): void {
+    console.log('START');
+  }
 }
