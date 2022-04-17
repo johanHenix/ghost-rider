@@ -1,6 +1,7 @@
 # NgGhostRider
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+A library for creating guided tours in angular.
+Ghost ride the whip!
 
 ## Code scaffolding
 
