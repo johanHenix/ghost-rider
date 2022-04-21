@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgGhostRiderModule } from 'ng-ghost-rider';
+import { GhostRiderModule } from 'ng-ghost-rider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -11,9 +11,11 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgGhostRiderModule
+    GhostRiderModule
   ],
-  providers: [],
+  // providers: [
+  //   GhostRiderBackdropService,
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

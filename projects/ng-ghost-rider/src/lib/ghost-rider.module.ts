@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { GhostRiderStepComponent } from './components/ghost-rider-step.component';
 import { GhostRiderStepAdvanceDirective } from './directives/ghost-rider-step-advance.directive';
 import { GhostRiderStepDirective } from './directives/ghost-rider-step.directive';
-import { NgGhostRiderComponent } from './ng-ghost-rider.component';
+import { GhostRiderBackdropService } from './providers/ghost-rider-backdrop.service';
 
 const DIRECTIVES = [
   GhostRiderStepDirective,
@@ -12,7 +12,6 @@ const DIRECTIVES = [
 ];
 
 const COMPONENTS = [
-  NgGhostRiderComponent,
   GhostRiderStepComponent,
 ];
 
@@ -28,6 +27,9 @@ const COMPONENTS = [
   exports: [
     ...COMPONENTS,
     ...DIRECTIVES,
-  ]
+  ],
+  providers: [
+    GhostRiderBackdropService
+  ],
 })
-export class NgGhostRiderModule { }
+export class GhostRiderModule { }

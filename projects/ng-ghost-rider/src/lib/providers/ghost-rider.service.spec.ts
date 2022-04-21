@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgGhostRiderService } from './ghost-rider.service';
+import { GhostRiderService } from './ghost-rider.service';
 
 describe('NgGhostRiderService', () => {
-  let service: NgGhostRiderService;
+  let service: GhostRiderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgGhostRiderService);
+    service = TestBed.inject(GhostRiderService);
   });
 
   it('should be created', () => {

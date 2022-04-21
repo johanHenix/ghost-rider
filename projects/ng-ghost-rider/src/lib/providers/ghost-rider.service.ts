@@ -1,15 +1,15 @@
 import { Injectable, Injector, OnDestroy, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, fromEvent, Observable, Subject, Subscription } from 'rxjs';
-import { GhostRiderTourGuide } from './helpers/ghost-rider-tour-guide';
-import { GhostRiderStepDetails } from './models/ghost-rider-step-details.model';
-import { GhostRiderEvent, GhostRiderEventSource, GhostRiderEventType } from './models/ghost-rider-step-event.model';
-import { GhostRiderStep } from './models/ghost-rider-step.model';
+import { GhostRiderTourGuide } from '../helpers/ghost-rider-tour-guide';
+import { GhostRiderStepDetails } from '../models/ghost-rider-step-details.model';
+import { GhostRiderEvent, GhostRiderEventSource, GhostRiderEventType } from '../models/ghost-rider-step-event.model';
+import { GhostRiderStep } from '../models/ghost-rider-step.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GhostRiderService implements OnDestroy {
-  private readonly _steps: Map<string, any> = new Map();
+  private readonly _steps: Map<string, GhostRiderStepDetails> = new Map();
   private readonly _stepAdded$ = new Subject<string>();
   private readonly _subs: Map<string, Subscription> = new Map();
   private readonly _renderer: Renderer2;
@@ -31,18 +31,18 @@ export class GhostRiderService implements OnDestroy {
     private readonly _injector: Injector,
     rendererFactory: RendererFactory2,
   ) {
-    // this._popoverFactory = new SldsPopoverFactory(this._injector);
+    // this._popoverFactory = new PopoverFactory(this._injector);
     this._renderer = rendererFactory.createRenderer(null, null);
 
     /**
-     * When there are step events, emit the event from the step's 'sldsWalkthroughStepEvent'
+     * When there are step events, emit the event from the step's 'ghostRiderStepEvent'
      * output so we can react to event from specific components
      */
     this._subs.set(
       'events',
       this.events$.subscribe((event) => {
         if (this._steps.has(event.name)) {
-          this._steps.get(event.name).sldsWalkthroughStepEvent.emit(event);
+          this._steps.get(event.name)?.ghostRiderStepEvent.emit(event);
         }
       }),
     );

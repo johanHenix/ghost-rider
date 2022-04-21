@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
-import { GhostRiderService } from '../ghost-rider.service';
+import { GhostRiderService } from '../providers/ghost-rider.service';
 import { GhostRiderEventSource } from '../models/ghost-rider-step-event.model';
 
 @Directive({ selector: '[ghostRiderStepAdvance]' })

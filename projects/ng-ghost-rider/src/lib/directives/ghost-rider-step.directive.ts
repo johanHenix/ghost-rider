@@ -1,5 +1,5 @@
 import { Directive, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewContainerRef } from '@angular/core';
-import { GhostRiderService } from '../ghost-rider.service';
+import { GhostRiderService } from '../providers/ghost-rider.service';
 import { GhostRiderStepConfig } from '../models/ghost-rider-step-config.model';
 import { GhostRiderStepDetails } from '../models/ghost-rider-step-details.model';
 import { GhostRiderEvent } from '../models/ghost-rider-step-event.model';
