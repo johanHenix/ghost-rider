@@ -1,6 +1,10 @@
 {
   "name": "ng-ghost-rider",
-  "version": "0.0.2",
+  "version": "0.0.3-beta",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/freddysilber/ghost-rider"
+  },
   "peerDependencies": {
     "@angular/common": "^13.3.3",
     "@angular/core": "^13.3.3",
@@ -8,5 +12,19 @@
   },
   "dependencies": {
     "tslib": "^2.2.0"
-  }
+  },
+  "keywords": [
+    "angular",
+    "library",
+    "guided tour",
+    "guided-tour",
+    "walkthrough",
+    "onboarding",
+    "ng",
+    "ghost-rider",
+    "ghost rider",
+    "ng-ghost-rider",
+    "ng ghost rider",
+    "tour"
+  ]
 }
