@@ -2,11 +2,16 @@
   "name": "ghost-rider",
   "version": "0.0.0",
   "scripts": {
+    "------------------- ANGULAR -------------------": "",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "------------------- GHOST RIDER -------------------": "",
+    "build-ghost-rider": "cd projects/ng-ghost-rider && ng build ng-ghost-rider && cd ../../",
+    "publish-ghost-rider": "cd dist/ng-ghost-rider && npm publish && cd ../../",
+    "build-and-publish": "npm run build-ghost-rider && npm publish-ghost-rider"
   },
   "private": true,
   "dependencies": {

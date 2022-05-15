@@ -13,9 +13,6 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     GhostRiderModule
   ],
-  // providers: [
-  //   GhostRiderBackdropService,
-  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

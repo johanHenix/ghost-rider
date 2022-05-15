@@ -11,9 +11,9 @@ export { GhostRiderStepAdvanceDirective } from './lib/directives/ghost-rider-ste
 
 // Components
 export { GhostRiderStepComponent } from './lib/components/ghost-rider-step.component';
+export { PopoverComponent } from './lib/components/popover.component';
 
 // Models
 export { GhostRiderStep } from './lib/models/ghost-rider-step.model';
 
 // Providers
-// export { GhostRiderBackdropService } from './lib/providers/ghost-rider-backdrop.service';

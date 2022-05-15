@@ -1,8 +1,4 @@
-import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-
-type PopoverPosition = 'above' | 'right' | 'below' | 'left';
-type PopoverNubbinPosition = 'auto';
-type PopoverContent<T> = T extends string ? string : ComponentPortal<T> | TemplatePortal<T>;
+import { PopoverContent, PopoverNubbinPosition, PopoverPosition } from './ghost-rider-popover.model';
 
 export class GhostRiderStepConfig<T = any> {
   public name!: string;
@@ -17,7 +13,8 @@ export class GhostRiderStepConfig<T = any> {
 
   public position: PopoverPosition = 'below';
   public nubbinPosition: PopoverNubbinPosition = 'auto';
-  public content!: PopoverContent<T>;
+  // @ts-ignore
+  public content: PopoverContent<T>;
 
   /**
    * Function to run before the popover is shown. 'popover.show(0)'
