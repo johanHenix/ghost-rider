@@ -63,14 +63,14 @@ export class AppComponent {
       [
         new GhostRiderStep('firstStep'),
         new GhostRiderStep('secondStep'),
-		// Optionally provide sub steps (for inner steps within the parent step)
-		new GhostRiderStep(
-			'thirdStepWithSubSteps',
-			[
-				new GhostRiderStep('firstSubStep'),
-				new GhostRiderStep('secondSubStep'),
-			]
-		)
+        // Optionally provide sub steps (for inner steps within the parent step)
+        new GhostRiderStep(
+          'thirdStepWithSubSteps',
+          [
+            new GhostRiderStep('firstSubStep'),
+            new GhostRiderStep('secondSubStep'),
+          ]
+        )
       ]
     );
   }
