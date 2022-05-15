@@ -27,18 +27,18 @@ export class AppModule { }
 ```html
 <!-- These directives can be placed anywhere in you application -->
 <h1 [ghostRiderStep]="{
-  name: 'tour.firstStep',
-  title: 'Step 1 title',
-  content: 'Step 1 content'
-}">
+    name: 'tour.firstStep',
+    title: 'Step 1 title',
+    content: 'Step 1 content'
+  }">
   Step 1
 </h1>
 
 <h1 [ghostRiderStep]="{
-  name: 'tour.secondStep',
-  title: 'Step 2 title',
-  content: 'Step 2 content'
-}">
+    name: 'tour.secondStep',
+    title: 'Step 2 title',
+    content: 'Step 2 content'
+  }">
   Step 2
 </h1>
 ```
