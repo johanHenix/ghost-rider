@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { GhostRiderService, GhostRiderStep } from 'ng-ghost-rider';
 
 @Component({
@@ -6,14 +6,12 @@ import { GhostRiderService, GhostRiderStep } from 'ng-ghost-rider';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent {
   title = 'ghost-rider';
 
   constructor(
     private readonly _ghostRiderService: GhostRiderService,
-  ) { }
-
-  ngAfterViewInit(): void {
+  ) {
     this._ghostRiderService.start(
       'tour',
       [
