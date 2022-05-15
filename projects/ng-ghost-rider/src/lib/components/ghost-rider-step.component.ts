@@ -8,7 +8,7 @@ import { PopoverComponent } from './popover.component';
 	selector: 'ghost-rider-step',
 	template: `
 		<div
-			class="slds-popover"
+			class="ghost-rider-popover"
 			[ngClass]="nubbinCls"
 			role="dialog"
 		>

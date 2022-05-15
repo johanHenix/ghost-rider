@@ -56,7 +56,7 @@ export type PopoverPosition = 'left' | 'right' | 'above' | 'below' | 'before' | 
 export type PopoverNubbinPosition = 'start' | 'center' | 'end' | 'auto' | 'none';
 
 /** CSS class that will be attached to the overlay panel. */
-export const POPOVER_PANEL_CLASS = 'slds-popover-container';
+export const POPOVER_PANEL_CLASS = 'ghost-rider-popover-container';
 
 export type PopoverContent<T> = T extends string ? string : ComponentPortal<T> | TemplatePortal<T>;
 
@@ -68,7 +68,7 @@ export function getPopoverInvalidPositionError(position: string) {
 	return Error(`Popover position "${position}" is invalid.`);
 }
 
-/** Default `sldsPopover` options that can be overridden. */
+/** Default `Popover` options that can be overridden. */
 export interface PopoverDefaultOptions {
 	showDelay: number;
 	hideDelay: number;
@@ -76,7 +76,7 @@ export interface PopoverDefaultOptions {
 	position?: PopoverPosition;
 }
 
-/** Injection token to be used to override the default options for `sldsPopover`. */
+/** Injection token to be used to override the default options for `Popover`. */
 export const GHOST_RIDER_POPOVER_DEFAULT_OPTIONS = new InjectionToken<PopoverDefaultOptions>(
 	'PopoverDefaultOptions',
 	{ providedIn: 'root', factory: GHOST_RIDER_POPOVER_DEFAULT_OPTIONS_FACTORY },
@@ -373,7 +373,7 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 			panelClass: POPOVER_PANEL_CLASS,
 			scrollStrategy: this._scrollStrategy(),
 			hasBackdrop,
-			backdropClass: ['slds-backdrop', 'slds-backdrop_open'],
+			backdropClass: ['ghost-rider-backdrop', 'ghost-rider-backdrop_open'],
 		});
 
 		this._updatePosition();

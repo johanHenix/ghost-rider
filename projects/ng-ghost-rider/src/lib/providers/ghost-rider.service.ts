@@ -1,7 +1,6 @@
 import { Injectable, Injector, OnDestroy, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, defer, Observable, of, Subject, Subscription } from 'rxjs';
 import { first, last, startWith } from 'rxjs/operators';
-// import { SldsNotifications } from '../../notification/service';
 import { Popover } from '../models/ghost-rider-popover.model';
 import { GhostRiderPopoverFactory } from '../providers/ghost-rider-popover-factory.service';
 import { GhostRiderStepComponent } from '../components/ghost-rider-step.component';
@@ -49,7 +48,6 @@ export class GhostRiderService implements OnDestroy {
 
   constructor(
     private readonly _injector: Injector,
-    // private readonly _notifications: SldsNotifications,
     rendererFactory: RendererFactory2,
   ) {
     this._popoverFactory = new GhostRiderPopoverFactory(this._injector);
@@ -324,7 +322,7 @@ export class GhostRiderService implements OnDestroy {
       popover.hide();
       active$.next(false);
 
-      this._renderer.removeClass(element.nativeElement, 'slds-walkthrough-step_active');
+      this._renderer.removeClass(element.nativeElement, 'ghost-rider-step_active');
       if (this._activePopover === popover) {
         // @ts-ignore
         this._activePopover = null;
@@ -425,7 +423,7 @@ export class GhostRiderService implements OnDestroy {
    * @param backdrop The backdrop overlay element
    */
   private _removeWindow(backdrop: HTMLElement): void {
-    this._renderer.removeClass(backdrop, 'slds-backdrop');
+    this._renderer.removeClass(backdrop, 'ghost-rider-backdrop');
     this._renderer.removeChild(backdrop, backdrop.firstChild);
 
     // if (this._uiMask) {

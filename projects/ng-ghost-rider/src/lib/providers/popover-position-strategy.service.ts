@@ -134,7 +134,7 @@ export class PopoverPositionStrategy implements PositionStrategy {
 	protected _offsetY = 0;
 
 	/** Selector to be used when finding the elements on which to set the transform origin. */
-	protected _transformOriginSelector: string = '.slds-popover';
+	protected _transformOriginSelector: string = '.ghost-rider-popover';
 
 	/** Keeps track of the CSS classes that the position strategy has applied on the overlay panel. */
 	protected _appliedPanelClasses: string[] = [];
