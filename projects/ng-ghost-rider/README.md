@@ -82,6 +82,14 @@ export class AppComponent {
 ## Contributing
 Feel free to report any bugs / issues [here](https://github.com/freddysilber/ghost-rider/issues)
 
+### Local Dev
+1. Fork and clone this repo
+2. cd to the **ng-ghost-rider** package ```cd projects/ng-ghost-rider```
+3. Build the package ```ng build ng-ghost-rider```
+4. cd to the root of the repo ```cd ../../```
+5. run ```ng serve```
+6. The dev environment should be up on port 4200!
+
 ## Build
 
 Run `ng build ng-ghost-rider` to build the project. The build artifacts will be stored in the `dist/` directory.
