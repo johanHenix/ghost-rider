@@ -3,6 +3,8 @@
 A library for creating guided tours in angular.
 Ghost ride the whip!
 
+Screenshots and GIFs coming soon!
+
 ## Usage
 
 1. Run ```npm i ng-ghost-rider```
