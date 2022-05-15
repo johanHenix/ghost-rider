@@ -28,7 +28,7 @@ export class AppModule { }
 <!-- These directives can be placed anywhere in you application -->
 <h1 [ghostRiderStep]="{
   name: 'tour.firstStep',
-	title: 'Step 1 title',
+  title: 'Step 1 title',
   content: 'Step 1 content'
 }">
   Step 1
