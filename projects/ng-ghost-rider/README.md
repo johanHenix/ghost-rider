@@ -31,7 +31,7 @@ export class AppModule { }
   title: 'Step 1 title',
   content: 'Step 1 content'
 }">
-Step 1
+  Step 1
 </h1>
 
 <h1 [ghostRiderStep]="{
@@ -39,7 +39,7 @@ Step 1
   title: 'Step 2 title',
   content: 'Step 2 content'
 }">
-Step 2
+  Step 2
 </h1>
 ```
 
