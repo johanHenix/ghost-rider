@@ -86,11 +86,9 @@ Feel free to report any bugs / issues [here](https://github.com/freddysilber/gho
 
 ### Local Dev
 1. Fork and clone this repo
-2. cd to the **ng-ghost-rider** package ```cd projects/ng-ghost-rider```
-3. Build the package ```ng build ng-ghost-rider```
-4. cd to the root of the repo ```cd ../../```
-5. Run ```ng serve```for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-6. The dev environment should be up on port 4200!
+2. Build the package ```ng build ng-ghost-rider```
+3. Run ```ng serve```for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+4. The dev environment should be up on port 4200!
 
 ## Build
 
