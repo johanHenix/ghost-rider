@@ -17,6 +17,7 @@ export class AppComponent {
       [
         new GhostRiderStep('firstStep'),
         new GhostRiderStep('secondStep'),
+        new GhostRiderStep('thirdStep'),
       ]
     );
   }
