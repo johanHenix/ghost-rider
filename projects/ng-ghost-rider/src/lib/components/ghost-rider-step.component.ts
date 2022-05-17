@@ -13,6 +13,7 @@ import { PopoverComponent } from './popover.component';
 			role="dialog"
 		>
 			<h1>{{ details.title }}</h1>
+			<p>{{ details.content }}</p>
 			<button (click)="close()">Close</button>
 			<button (click)="back()">Back</button>
 			<button (click)="next()">Next</button>
