@@ -285,7 +285,6 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 
 	/** Shows the popover after the delay in ms, defaults to popover-delay-show or 0ms if no input */
 	public show(delay: number = this.showDelay): void {
-		console.log('SHOW');
 		// @ts-ignore
 		if (this.disabled || !this.content || (this.isPopoverVisible() && !this._popoverInstance.hasTimeout)) {
 			return;
@@ -302,7 +301,6 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 			.subscribe(() => this._detach());
 		this._updateContent();
 		this._popoverInstance.show(delay);
-		console.log(this);
 	}
 
 	/** Hides the popover after the delay in ms, defaults to popover-delay-hide or 0ms if no input */
@@ -379,6 +377,7 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 		this._updatePosition();
 
 		this._overlayRef.detachments()
+			// @ts-ignore
 			.pipe(takeUntil(this._destroyed))
 			.subscribe(() => this._detach());
 
@@ -496,6 +495,7 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 			this._popoverInstance.markForCheck();
 
 			this._ngZone.onMicrotaskEmpty.asObservable().pipe(
+				// @ts-ignore
 				take(1),
 				takeUntil(this._destroyed),
 			).subscribe(() => {
