@@ -3,7 +3,7 @@ import { GhostRiderService } from '../providers/ghost-rider.service';
 import { GhostRiderStepConfig } from '../models/ghost-rider-step-config.model';
 import { GhostRiderStepDetails } from '../models/ghost-rider-step-details.model';
 import { GhostRiderEvent } from '../models/ghost-rider-step-event.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Directive({ selector: '[ghostRiderStep]' })
 export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, OnInit, OnDestroy {
@@ -25,6 +25,8 @@ export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, 
   public config!: GhostRiderStepConfig<T>;
   public active$: BehaviorSubject<boolean> = new BehaviorSubject(false as boolean);
 
+  private readonly _subs: Subscription[] = [];
+
 	constructor(
     public readonly element: ElementRef<HTMLElement>,
     public readonly vcr: ViewContainerRef,
@@ -38,6 +40,10 @@ export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, 
   }
 
   ngOnDestroy(): void {
-    this._ghostRiderService.unregisterStep(this);
+    if (this.config && this.config.name) {
+      this._ghostRiderService.unregisterStep(this);
+    }
+
+    this._subs.forEach((sub) => sub.unsubscribe());
   }
 }
