@@ -9,7 +9,13 @@ Screenshots and GIFs coming soon!
 
 1. Run ```npm i ng-ghost-rider```
 
-2. Add the module to your application
+2. Add the stylesheet to your global styles file
+> After you import the stylesheet, you can override the css / scss to fit your application's needs 😃
+```scss
+@import 'ng-ghost-rider/styles/ghost-rider.scss';
+```
+
+3. Add the module to your application
 ```javascript
 @NgModule({
   declarations: [
@@ -25,7 +31,7 @@ Screenshots and GIFs coming soon!
 export class AppModule { }
 ```
 
-3. Then, set up any elements you want to be used as steps
+4. Then, set up any elements you want to be used as steps
 ```html
 <!-- These directives can be placed anywhere in you application -->
 <h1 [ghostRiderStep]="{
@@ -45,7 +51,7 @@ export class AppModule { }
 </h1>
 ```
 
-4. Inject the **GhostRiderService** into the component that you'd like to start the tour from
+5. Inject the **GhostRiderService** into the component that you'd like to start the tour from
 ```javascript
 import { Component } from '@angular/core';
 import { GhostRiderService, GhostRiderStep } from 'ng-ghost-rider';
@@ -79,7 +85,7 @@ export class AppComponent {
 }
 ```
 
-5. Enjoy the ride!
+6. Enjoy the ride!
 
 ## Contributing
 Feel free to report any bugs / issues [here](https://github.com/freddysilber/ghost-rider/issues)
@@ -88,7 +94,6 @@ Feel free to report any bugs / issues [here](https://github.com/freddysilber/gho
 1. Fork and clone this repo
 2. Build the package ```ng build ng-ghost-rider```
 3. Run ```ng serve```for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-4. The dev environment should be up on port 4200!
 
 ## Build
 
