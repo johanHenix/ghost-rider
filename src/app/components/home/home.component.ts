@@ -5,6 +5,7 @@ import { GhostRiderEvent, GhostRiderEventType } from 'ng-ghost-rider';
 @Component({
 	selector: 'app-home',
 	templateUrl: 'home.component.html',
+	styleUrls: ['home.component.scss'],
 })
 export class HomeComponent {
 
