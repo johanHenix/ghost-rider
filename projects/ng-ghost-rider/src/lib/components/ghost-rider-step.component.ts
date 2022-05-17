@@ -22,13 +22,11 @@ import { PopoverComponent } from './popover.component';
 	styles: [],
 })
 export class GhostRiderStepComponent extends PopoverComponent {
-	// @ts-ignore
 	public stepIndex: number;
 	public stepCount: number;
 	public stepName: string;
 	public isLastStep: boolean;
 	public hasSubSteps: boolean;
-	// @ts-ignore
 	public details: GhostRiderStepConfig;
 
 	public readonly isSubStep: boolean;

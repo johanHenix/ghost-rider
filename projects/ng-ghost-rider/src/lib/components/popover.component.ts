@@ -56,7 +56,6 @@ export class PopoverComponent<T = any> implements OnDestroy {
 	public contentTpl: TemplatePortal<T> | any; // TODO: Add ability to configure context
 	public contentText: string | any;
 
-	// @ts-ignore
 	public nubbinCls: string;
 
 	public isTooltip!: boolean;
@@ -76,7 +75,6 @@ export class PopoverComponent<T = any> implements OnDestroy {
 	private _showTimeoutId!: number | null;
 
 	/** The timeout ID of any current timer set to hide the tooltip */
-	// @ts-ignore
 	private _hideTimeoutId: number | null;
 
 	/** Property watched by the animation framework to show or hide the tooltip */

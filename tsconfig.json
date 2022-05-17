@@ -11,6 +11,7 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "strictPropertyInitialization": false,
     "paths": {
       "ng-ghost-rider": [
         "dist/ng-ghost-rider/ng-ghost-rider",

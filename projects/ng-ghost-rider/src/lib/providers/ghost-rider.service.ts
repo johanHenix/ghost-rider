@@ -20,16 +20,15 @@ import { GhostRiderStep } from '../models/ghost-rider-step.model';
 @Injectable({ providedIn: 'root' })
 export class GhostRiderService implements OnDestroy {
   private readonly _stepAdded$ = new Subject<string>();
+
   private readonly _subs = new Map<string, Subscription>();
-  private readonly _popoverFactory: GhostRiderPopoverFactory;
   private readonly _steps = new Map<string, GhostRiderStepDetails>(); // name => step
+
+  private readonly _popoverFactory: GhostRiderPopoverFactory;
   private readonly _renderer: Renderer2;
 
-  // @ts-ignore
   private _tourGuide: GhostRiderTourGuide;
-  // @ts-ignore
   private _activePopover: Popover;
-  // @ts-ignore
   private _hideStep: () => Observable<void>;
   // private _uiMask: HTMLDivElement;
 
