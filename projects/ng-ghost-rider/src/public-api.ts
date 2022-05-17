@@ -15,5 +15,10 @@ export { PopoverComponent } from './lib/components/popover.component';
 
 // Models
 export { GhostRiderStep } from './lib/models/ghost-rider-step.model';
+export {
+	GhostRiderEventSource,
+	GhostRiderEventType,
+	GhostRiderEvent
+} from './lib/models/ghost-rider-step-event.model';
 
 // Providers
