@@ -5,8 +5,8 @@ export class GhostRiderTourGuide {
 	public currentStep: number = 0;
 
 	constructor(
-		public tourNamespace: string,
-		public steps: GhostRiderStep[],
+		public readonly tourNamespace: string,
+		public readonly steps: GhostRiderStep[],
 	) {
 		this.steps.forEach((step) => {
 			// Add the tour namespace to every step
@@ -27,12 +27,24 @@ export class GhostRiderTourGuide {
 	 * Sets the active step to the next 'Parent' step that is visible
 	 */
 	public getNextStep(): GhostRiderStep {
+		const startingStep: GhostRiderStep = this.activeStep;
 		do {
-			this.currentStep++;
-			this.activeStep = this.steps[this.currentStep];
+			if (this.steps[this.currentStep + 1]) {
+				this.currentStep++;
+				this.activeStep = this.steps[this.currentStep];
+			} else {
+				return startingStep;
+			}
 		} while (this.activeStep.hidden);
 
 		return this.activeStep;
+
+		// do {
+		// 	this.currentStep++;
+		// 	this.activeStep = this.steps[this.currentStep];
+		// } while (this.activeStep.hidden);
+
+		// return this.activeStep;
 	}
 
 	/**
@@ -53,12 +65,24 @@ export class GhostRiderTourGuide {
 	 * Sets the active step to the previous 'Parent' step that is visible
 	 */
 	public getPreviousStep(): GhostRiderStep {
+		const startingStep: GhostRiderStep = this.activeStep;
 		do {
-			this.currentStep--;
-			this.activeStep = this.steps[this.currentStep];
+			if (this.steps[this.currentStep - 1]) {
+				this.currentStep--;
+				this.activeStep = this.steps[this.currentStep];
+			} else {
+				return startingStep;
+			}
 		} while (this.activeStep.hidden);
 
 		return this.activeStep;
+
+		// do {
+		// 	this.currentStep--;
+		// 	this.activeStep = this.steps[this.currentStep];
+		// } while (this.activeStep.hidden);
+
+		// return this.activeStep;
 	}
 
 	/**
