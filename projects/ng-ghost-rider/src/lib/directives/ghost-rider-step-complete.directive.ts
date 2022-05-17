@@ -2,7 +2,7 @@ import { Directive, HostListener } from '@angular/core';
 import { GhostRiderEventSource } from '../models/ghost-rider-step-event.model';
 import { GhostRiderService } from '../providers/ghost-rider.service';
 
-@Directive({ selector: '[sldsWalkthroughStepComplete]' })
+@Directive({ selector: '[ghostRiderStepComplete]' })
 export class GhostRiderStepCompleteDirective {
 
   constructor(

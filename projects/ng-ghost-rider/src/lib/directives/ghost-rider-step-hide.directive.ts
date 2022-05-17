@@ -1,7 +1,7 @@
 import { Directive, HostListener } from '@angular/core';
 import { GhostRiderService } from '../providers/ghost-rider.service';
 
-@Directive({ selector: '[sldsWalkthroughStepHide]' })
+@Directive({ selector: '[ghostRiderStepHide]' })
 export class GhostRiderStepHideDirective {
   constructor(
     private readonly _ghostRiderService: GhostRiderService,
