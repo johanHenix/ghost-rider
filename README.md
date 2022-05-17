@@ -14,7 +14,7 @@ Screenshots and GIFs coming soon!
 @NgModule({
   declarations: [
     AppComponent
-],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
