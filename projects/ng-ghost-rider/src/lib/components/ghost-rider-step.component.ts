@@ -12,11 +12,13 @@ import { PopoverComponent } from './popover.component';
 			[ngClass]="nubbinCls"
 			role="dialog"
 		>
-			<h1>{{ details.title }}</h1>
-			<p>{{ details.content }}</p>
-			<button (click)="close()">Close</button>
-			<button (click)="back()">Back</button>
-			<button (click)="next()">Next</button>
+			<h1 class="ghost-rider_title">{{ details.title }}</h1>
+			<div class="ghost-rider_contents">{{ details.content }}</div>
+			<div class="ghost-rider_actions">
+				<button (click)="close()" class="ghost-rider_close-button">Close</button>
+				<button (click)="back()" class="ghost-rider_back-button">Back</button>
+				<button (click)="next()" class="ghost-rider_next-button">Next</button>
+			</div>
 		</div>
 	`,
 	styles: [],

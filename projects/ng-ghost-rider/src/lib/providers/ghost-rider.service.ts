@@ -370,7 +370,6 @@ export class GhostRiderService implements OnDestroy {
     this.removeWindow();
     // TODO: rethink some of this logic and design
     if (this._tourGuide.activeStep.parent) {
-      console.log('here?');
       this._isAsync = true;
     }
     // Show new popover step
@@ -383,10 +382,7 @@ export class GhostRiderService implements OnDestroy {
       this._removeWindow(popover._overlayRef.backdropElement);
     };
 
-    console.log('isAsync', this._isAsync);
-
     if (this._isAsync) {
-      console.log('Doing this async');
       // Wait for popover component to be visible before adding styles
       // @ts-ignore
       const afterVisibleSub = popover.popoverInstance.afterVisible().subscribe(() => {
@@ -396,7 +392,6 @@ export class GhostRiderService implements OnDestroy {
         afterVisibleSub.unsubscribe();
       });
     } else {
-      console.log('Not async');
       // Since this isn't async, we can just build the new backdrop and set styles ASAP
       // @ts-ignore
       this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef);
