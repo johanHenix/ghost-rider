@@ -13,31 +13,34 @@ import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 
 import { Observable, Subject } from 'rxjs';
 
-// // #region template
-// const template = `
-// <div
-//   class="ghost-rider-popover"
-//   [ngClass]="nubbinCls"
-//   [class.slds-popover_tooltip]="isTooltip"
-//   [attr.role]="isTooltip ? 'tooltip' : 'dialog'"
-// >
-//   <div class="slds-popover__body">
-//     <ng-container [cdkPortalOutlet]="contentCmp || contentTpl || contentTextTpl"></ng-container>
-//   </div>
-// </div>
+// #region template
+const template = `
 
-// <ng-template
-//   cdkPortal
-//   #contentTextTpl="cdkPortal"
-// >{{ contentText }}</ng-template>
-// `;
+<div
+	class="ghost-rider-popover"
+	[ngClass]="nubbinCls"
+	[class.ghost-rider-popover_tooltip]="isTooltip"
+	[attr.role]="isTooltip ? 'tooltip' : 'dialog'"
+>
+	<div class="ghost-rider-popover__body">
+		<ng-container [cdkPortalOutlet]="contentCmp || contentTpl || contentTextTpl"></ng-container>
+	</div>
+</div>
+
+<ng-template
+	cdkPortal
+	#contentTextTpl="cdkPortal"
+>
+	{{ contentText }}
+</ng-template>
+
+`;
 
 export type PopoverContent<T> = T extends string ? string : ComponentPortal<T> | TemplatePortal<T>;
 
 @Component({
 	selector: 'ghost-rider-popover',
-	template: '',
-	// TODO: Fix "delay"
+	template,
 })
 export class PopoverComponent<T = any> implements OnDestroy {
 	public set content(content: PopoverContent<T>) {

@@ -14,7 +14,7 @@ export class GhostRiderPopoverFactory {
 	public createPopover<T = any>(
 		elementRef: ElementRef,
 		config?: GhostRiderPopoverConfig,
-	): any {
+	): Popover<T> {
 		const providers: StaticProvider[] = [
 			GHOST_RIDER_POPOVER_STATIC_PROVIDER,
 			{ provide: ElementRef, useValue: elementRef },

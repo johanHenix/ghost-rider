@@ -8,29 +8,26 @@ import { GhostRiderTourGuide } from '../helpers/ghost-rider-tour-guide';
 import { GhostRiderEvent, GhostRiderEventSource, GhostRiderEventType } from '../models/ghost-rider-step-event.model';
 import { GhostRiderStepDetails } from '../models/ghost-rider-step-details.model';
 import { GhostRiderStep } from '../models/ghost-rider-step.model';
+import { OverlayRef } from '@angular/cdk/overlay';
 
 /**
- * TODO:
- * Need to fix 'blinking' between some steps
- * Need to fix popover repositioning
- * Idea:
- * Create a substep component to help clean up the template
- * Create tour 'milestones' that do something fancy when the user hits a milestone and also tracks their progress
+ * Service to control guided tours and walkthrough steps
  */
 @Injectable({ providedIn: 'root' })
 export class GhostRiderService implements OnDestroy {
   private readonly _stepAdded$ = new Subject<string>();
-
   private readonly _subs = new Map<string, Subscription>();
   private readonly _steps = new Map<string, GhostRiderStepDetails>(); // name => step
-
   private readonly _popoverFactory: GhostRiderPopoverFactory;
   private readonly _renderer: Renderer2;
 
   private _tourGuide: GhostRiderTourGuide;
   private _activePopover: Popover;
+  private _uiMask: HTMLDivElement | null;
+  private _isAsync: boolean = false; // Flag to use asynchronous or synchronous methods
+
   private _hideStep: () => Observable<void>;
-  // private _uiMask: HTMLDivElement;
+  private _removeWindowHandler: () => void;
 
   // Flag that the tour is in flight. Once the tour is closed or skipped, this will be false
   public readonly activeTour$ = new BehaviorSubject(false);
@@ -145,7 +142,7 @@ export class GhostRiderService implements OnDestroy {
       // @ts-ignore
       this.tourGuide.activeStep = this.tourGuide.activeStep.parent;
       // @ts-ignore
-      this._goToStep({ type: null, name, source });
+      this._goToStep({ type: null, name, source }, true);
     }
   }
 
@@ -195,7 +192,7 @@ export class GhostRiderService implements OnDestroy {
       const { name } = this._tourGuide.activeStep;
       this._tourGuide.getPreviousSubStep();
       // @ts-ignore
-      this._goToStep({ type: null, name, source });
+      this._goToStep({ type: null, name, source }, true);
     }
   }
 
@@ -205,7 +202,6 @@ export class GhostRiderService implements OnDestroy {
    */
   public complete(source: GhostRiderEventSource = GhostRiderEventSource.Manual): void {
     this.close(source, GhostRiderEventType.Complete);
-    // this._notifications.alertSuccess({ title: 'Tour Complete!' });
   }
 
   /**
@@ -218,8 +214,11 @@ export class GhostRiderService implements OnDestroy {
     type: GhostRiderEventType = GhostRiderEventType.Close,
   ): void {
     this.activeTour$.next(false);
-    // this.events$.next({ type, name: this._tourGuide.tourNamespace, source });
+
     const { name } = this._tourGuide.activeStep;
+    // Immediately remove the backdrop and clip path elements
+    this._removeWindowHandler();
+    // Dispose of the step and cleanup
     const hideStepSub = this.hideStep().subscribe(() => {
       this.events$.next({ type, name, source });
       hideStepSub.unsubscribe();
@@ -264,8 +263,17 @@ export class GhostRiderService implements OnDestroy {
       this._buildWindow(
         // @ts-ignore
         this._steps.get(this._tourGuide.activeStep.name).element.nativeElement.getBoundingClientRect(),
-        this._activePopover._overlayRef.backdropElement,
+        this._activePopover._overlayRef,
       );
+    }
+  }
+
+  /**
+   * Removes backdrop and clip path divs for the active step
+   */
+  public removeWindow(): void {
+    if (this._removeWindowHandler) {
+      this._removeWindowHandler();
     }
   }
 
@@ -273,7 +281,7 @@ export class GhostRiderService implements OnDestroy {
    * Finds the step to show if it exists or when it is dynamically registered from the subject
    * @param event Optional event object to emit
    */
-  private _goToStep(event?: GhostRiderEvent): void {
+  private _goToStep(event?: GhostRiderEvent, asyncOverride?: boolean): void {
     if (this._tourGuide.activeStep) {
       this.hideStep().subscribe(() => {
 
@@ -287,7 +295,15 @@ export class GhostRiderService implements OnDestroy {
           this._subs.delete('stepAdded');
         }
 
-        if (this._steps.has(this._tourGuide.activeStep.name)) {
+        const hasStep = this._steps.has(this._tourGuide.activeStep.name);
+
+        if (asyncOverride !== undefined) {
+          this._isAsync = asyncOverride;
+        } else {
+          this._isAsync = !hasStep;
+        }
+
+        if (hasStep) {
           this._showStep();
         } else {
           this._subs.set(
@@ -316,12 +332,11 @@ export class GhostRiderService implements OnDestroy {
 
     // Assign a tear down function for the active step
     this._hideStep = (): Observable<void> => {
-      this._removeWindow(popover._overlayRef.backdropElement);
-
       popover.hide();
       active$.next(false);
+      this._removeMask();
+      this._renderer.removeClass(element.nativeElement, 'ghost-rider-walkthrough-step_active');
 
-      this._renderer.removeClass(element.nativeElement, 'ghost-rider-step_active');
       if (this._activePopover === popover) {
         // @ts-ignore
         this._activePopover = null;
@@ -331,6 +346,7 @@ export class GhostRiderService implements OnDestroy {
 
       // @ts-ignore
       return defer(() => {
+        // @ts-ignore
         return popover.popoverInstance.afterHidden().pipe(
           startWith(null as any),
           last(),
@@ -339,7 +355,7 @@ export class GhostRiderService implements OnDestroy {
     };
 
     // Custom class that we can use too style the target element
-    this._renderer.addClass(element.nativeElement, 'ghost-rider-step_active');
+    this._renderer.addClass(element.nativeElement, 'ghost-rider-walkthrough-step_active');
 
     popover.position = config.position;
     popover.nubbinPosition = config.nubbinPosition;
@@ -350,18 +366,41 @@ export class GhostRiderService implements OnDestroy {
       config.beforeActivate();
     }
 
+    // Remove old backdrop and clip paths
+    this.removeWindow();
+    // TODO: rethink some of this logic and design
+    if (this._tourGuide.activeStep.parent) {
+      console.log('here?');
+      this._isAsync = true;
+    }
+    // Show new popover step
     popover.show(0);
+    // Set props on step component
+    (popover.popoverInstance as GhostRiderStepComponent).details = config;
+    // Assign new backdrop and clip path destroyer
+    this._removeWindowHandler = () => {
+      // @ts-ignore
+      this._removeWindow(popover._overlayRef.backdropElement);
+    };
 
-    // Wait for popover component to be visible before adding styles
-    const afterVisibleSub = popover.popoverInstance.afterVisible().subscribe(() => {
-      this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef.backdropElement);
-      this._renderer.setStyle(popover._overlayRef.backdropElement.nextSibling, 'zIndex', 9001);
-      active$.next(true);
-      afterVisibleSub.unsubscribe();
-    });
+    console.log('isAsync', this._isAsync);
 
-    const instance = popover.popoverInstance as GhostRiderStepComponent;
-    instance.details = config;
+    if (this._isAsync) {
+      console.log('Doing this async');
+      // Wait for popover component to be visible before adding styles
+      // @ts-ignore
+      const afterVisibleSub = popover.popoverInstance.afterVisible().subscribe(() => {
+        // @ts-ignore
+        this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef);
+        active$.next(true);
+        afterVisibleSub.unsubscribe();
+      });
+    } else {
+      console.log('Not async');
+      // Since this isn't async, we can just build the new backdrop and set styles ASAP
+      // @ts-ignore
+      this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef);
+    }
   }
 
   /**
@@ -369,9 +408,9 @@ export class GhostRiderService implements OnDestroy {
    *
    * TODO: fix the slight edges that are showing between the inner and outter clip paths
    * @param rect The rectangle dimensions to clip
-   * @param backdrop The backdrop overlay element
+   * @param overlayRef The overlay element
    */
-  private _buildWindow(rect: DOMRect, backdrop: HTMLElement): void {
+  private _buildWindow(rect: DOMRect, overlayRef: OverlayRef): void {
     // if (this._tourGuide.activeStep.preventClicks && !this._uiMask) {
     //   // Make div to prevent actions
     //   this._uiMask = this._renderer.createElement('div');
@@ -381,11 +420,13 @@ export class GhostRiderService implements OnDestroy {
     //   this._renderer.setStyle(this._uiMask, 'background-color', 'transparent');
     //   this._renderer.setStyle(this._uiMask, 'zIndex', '8999');
     //   this._renderer.setStyle(this._uiMask, 'pointerEvents', 'all');
-    //   this._renderer.insertBefore(backdrop.parentElement, this._uiMask, backdrop);
+    //   this._renderer.insertBefore(overlayRef.backdropElement.parentElement, this._uiMask, overlayRef.backdropElement);
     // }
 
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.nextSibling, 'zIndex', 9001);
     this._renderer.setStyle( // Should we remove this style on tear down?
-      backdrop,
+      overlayRef.backdropElement,
       'clipPath',
       `polygon(
           0% 0%,
@@ -401,20 +442,28 @@ export class GhostRiderService implements OnDestroy {
         )`,
     );
 
-    if (!backdrop.firstChild) {
-      this._renderer.appendChild(backdrop, this._renderer.createElement('div'));
+    // @ts-ignore
+    if (!overlayRef.backdropElement.firstChild) {
+      this._renderer.appendChild(overlayRef.backdropElement, this._renderer.createElement('div'));
     }
 
     const buffer = 5;
     const borderRadius = buffer;
     const distributionSize = buffer / 2;
 
-    this._renderer.setStyle(backdrop.firstChild, 'position', 'absolute'); // Should this be 'relative'?
-    this._renderer.setStyle(backdrop.firstChild, 'background', 'white');
-    this._renderer.setStyle(backdrop.firstChild, 'width', `${rect.width + buffer}px`);
-    this._renderer.setStyle(backdrop.firstChild, 'height', `${rect.height + buffer}px`);
-    this._renderer.setStyle(backdrop.firstChild, 'clipPath', `inset(0 round ${borderRadius}px)`);
-    this._renderer.setStyle(backdrop.firstChild, 'inset', `${rect.y - distributionSize}px 0 0 ${rect.x - distributionSize}px`);
+    // Should this be 'relative'?
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'position', 'absolute');
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'background', 'white');
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'width', `${rect.width + buffer}px`);
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'height', `${rect.height + buffer}px`);
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'clipPath', `inset(0 round ${borderRadius}px)`);
+    // @ts-ignore
+    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'inset', `${rect.y - distributionSize}px 0 0 ${rect.x - distributionSize}px`);
   }
 
   /**
@@ -422,12 +471,23 @@ export class GhostRiderService implements OnDestroy {
    * @param backdrop The backdrop overlay element
    */
   private _removeWindow(backdrop: HTMLElement): void {
-    this._renderer.removeClass(backdrop, 'ghost-rider-backdrop');
-    this._renderer.removeChild(backdrop, backdrop.firstChild);
+    if (backdrop) {
+      this._renderer.removeClass(backdrop, 'ghost-rider-backdrop');
+      if (backdrop.firstChild) {
+        this._renderer.removeChild(backdrop, backdrop.firstChild);
+      }
+    }
 
-    // if (this._uiMask) {
-    //   this._uiMask.remove();
-    //   this._uiMask = null;
-    // }
+    this._removeMask();
+  }
+
+  /**
+   * Removes the masking div to prevent clicks
+   */
+  private _removeMask(): void {
+    if (this._uiMask) {
+      this._uiMask.remove();
+      this._uiMask = null;
+    }
   }
 }
