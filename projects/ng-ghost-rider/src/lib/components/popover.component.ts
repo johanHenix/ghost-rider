@@ -10,37 +10,31 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
-
 import { Observable, Subject } from 'rxjs';
-
-// #region template
-const template = `
-
-<div
-	class="ghost-rider-popover"
-	[ngClass]="nubbinCls"
-	[class.ghost-rider-popover_tooltip]="isTooltip"
-	[attr.role]="isTooltip ? 'tooltip' : 'dialog'"
->
-	<div class="ghost-rider-popover__body">
-		<ng-container [cdkPortalOutlet]="contentCmp || contentTpl || contentTextTpl"></ng-container>
-	</div>
-</div>
-
-<ng-template
-	cdkPortal
-	#contentTextTpl="cdkPortal"
->
-	{{ contentText }}
-</ng-template>
-
-`;
 
 export type PopoverContent<T> = T extends string ? string : ComponentPortal<T> | TemplatePortal<T>;
 
 @Component({
 	selector: 'ghost-rider-popover',
-	template,
+	template: `
+		<div
+			class="ghost-rider-popover"
+			[ngClass]="nubbinCls"
+			[class.ghost-rider-popover_tooltip]="isTooltip"
+			[attr.role]="isTooltip ? 'tooltip' : 'dialog'"
+		>
+			<div class="ghost-rider-popover__body">
+				<ng-container [cdkPortalOutlet]="contentCmp || contentTpl || contentTextTpl"></ng-container>
+			</div>
+		</div>
+
+		<ng-template
+			cdkPortal
+			#contentTextTpl="cdkPortal"
+		>
+			{{ contentText }}
+		</ng-template>
+	`,
 })
 export class PopoverComponent<T = any> implements OnDestroy {
 	public set content(content: PopoverContent<T>) {
@@ -61,9 +55,9 @@ export class PopoverComponent<T = any> implements OnDestroy {
 
 	public nubbinCls: string;
 
-	public isTooltip!: boolean;
+	public isTooltip: boolean;
 
-	private _position!: ConnectedPosition;
+	private _position: ConnectedPosition;
 	public get position(): ConnectedPosition { return this._position; }
 	public set position(pos: ConnectedPosition) {
 		if (pos !== this._position) {
@@ -75,7 +69,7 @@ export class PopoverComponent<T = any> implements OnDestroy {
 	}
 
 	/** The timeout ID of any current timer set to show the tooltip */
-	private _showTimeoutId!: number | null;
+	private _showTimeoutId: number | null;
 
 	/** The timeout ID of any current timer set to hide the tooltip */
 	private _hideTimeoutId: number | null;

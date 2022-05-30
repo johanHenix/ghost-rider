@@ -7,7 +7,6 @@ export class GhostRiderStep {
 
   constructor(
     public name: string,
-    // tslint:disable-next-line: trailing-comma
     ...steps: GhostRiderStep[]
   ) {
     if (steps && steps.length) {

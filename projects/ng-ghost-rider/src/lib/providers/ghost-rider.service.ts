@@ -326,8 +326,7 @@ export class GhostRiderService implements OnDestroy {
    * Destroys the active popover and creates the new popover for the desired step
    */
   private _showStep(): void {
-    // @ts-ignore
-    const { element, vcr, config, active$ } = this._steps.get(this._tourGuide.activeStep.name);
+    const { element, vcr, config, active$ } = this._steps.get(this._tourGuide.activeStep.name) as GhostRiderStepDetails;
     const popover = this._activePopover = this._popoverFactory.createPopover(element, { vcr });
 
     // Assign a tear down function for the active step

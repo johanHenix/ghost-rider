@@ -1,3 +1,4 @@
+import { PortalModule } from '@angular/cdk/portal';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { GhostRiderModule } from 'ng-ghost-rider';
@@ -17,6 +18,7 @@ const COMPONENTS = [
     COMPONENTS
   ],
   imports: [
+    PortalModule,
     BrowserModule,
     AppRoutingModule,
     GhostRiderModule

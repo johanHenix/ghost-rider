@@ -12,14 +12,69 @@ import { PopoverComponent } from './popover.component';
 			[ngClass]="nubbinCls"
 			role="dialog"
 		>
-			<h1 class="ghost-rider_title">{{ details.title }}</h1>
-			<div class="ghost-rider_contents">{{ details.content }}</div>
-			<div class="ghost-rider_actions">
-				<button (click)="close()" class="ghost-rider_close-button">Close</button>
-				<button (click)="back()" class="ghost-rider_back-button">Back</button>
-				<button (click)="next()" class="ghost-rider_next-button">Next</button>
+			<div class="ghost-rider-popover__header">
+				<h1>{{ details.title || '&nbsp;' }}</h1>
+				<div
+					(click)="close()"
+					class="ghost-rider_close-button"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						aria-hidden="true"
+						role="img"
+						width="1.5em"
+						height="1.5em"
+						preserveAspectRatio="xMidYMid meet"
+						viewBox="0 0 1024 1024"
+					>
+						<path
+							fill="currentColor"
+							d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496z"
+						/>
+					</svg>
+				</div>
+			</div>
+
+			<div class="ghost-rider-popover__body">
+				<ng-container [cdkPortalOutlet]="contentCmp || contentTpl || contentTextTpl"></ng-container>
+			</div>
+
+			<div class="ghost-rider-popover__footer">
+				<span class="slds-text-title">
+					Step {{ stepIndex + 1 }} of {{ stepCount }}
+				</span>
+				<div>
+					<button
+						(click)="back()"
+						*ngIf="stepIndex > 0"
+						class="ghost-rider_back-button"
+					>
+						Back
+					</button>
+					<button
+						(click)="next()"
+						*ngIf="!isLastStep"
+						class="ghost-rider_next-button"
+					>
+						Next
+					</button>
+					<button
+						(click)="complete()"
+						*ngIf="isLastStep"
+						class="ghost-rider_complete-button"
+					>
+						Complete
+					</button>
+				</div>
 			</div>
 		</div>
+
+		<ng-template
+			cdkPortal
+			#contentTextTpl="cdkPortal"
+		>
+			{{ contentText }}
+		</ng-template>
 	`,
 	styles: [],
 })

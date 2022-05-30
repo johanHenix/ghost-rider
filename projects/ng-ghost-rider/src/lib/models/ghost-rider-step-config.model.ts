@@ -1,8 +1,8 @@
 import { PopoverContent, PopoverNubbinPosition, PopoverPosition } from './ghost-rider-popover.model';
 
 export class GhostRiderStepConfig<T = any> {
-  public name!: string;
-  public title!: string;
+  public name: string;
+  public title: string;
   public backButtonLabel: string = 'Back';
   public nextButtonLabel: string = 'Next';
 

@@ -3,11 +3,19 @@
 	<h1
 		[ghostRiderStep]="{
 			name: 'tour.firstStep',
-			title: 'The fire is burning 🔥',
-			content: 'Home route'
+			title: 'Step 1 Title',
+			content: firstStepTpl
 		}"
 		(ghostRiderStepEvent)="handleEvent($event)"
 	>
 		Step 1
 	</h1>
 </div>
+
+<ng-template
+	cdkPortal
+	#firstStepTpl="cdkPortal"
+>
+	<h1>Home Route</h1>
+	<p>This step uses a portal for it's content</p>
+</ng-template>

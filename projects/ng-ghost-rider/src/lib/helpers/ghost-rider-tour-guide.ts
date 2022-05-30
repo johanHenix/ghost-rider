@@ -53,9 +53,8 @@ export class GhostRiderTourGuide {
 	public getNextSubStep(): GhostRiderStep {
 		if (this.activeStep.hasSubSteps) {
 			this.activeStep = this.activeStep.subSteps[0];
-		} else {
-			// const siblings = this.activeStep.parent.subSteps;
-			const siblings = this.activeStep.parent!.subSteps;
+		} else if (this.activeStep.parent) {
+			const siblings = this.activeStep.parent.subSteps;
 			this.activeStep = siblings[siblings.indexOf(this.activeStep) + 1];
 		}
 		return this.activeStep;
@@ -93,7 +92,6 @@ export class GhostRiderTourGuide {
 		const previous = siblings.indexOf(this.activeStep) - 1;
 		if (siblings[previous]) {
 			this.activeStep = siblings[previous];
-			// } else {
 		} else if (this.activeStep.parent) {
 			this.activeStep = this.activeStep.parent;
 		}
