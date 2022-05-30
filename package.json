@@ -11,7 +11,7 @@
     "------------------- GHOST RIDER -------------------": "",
     "build-ghost-rider": "cd projects/ng-ghost-rider && ng build ng-ghost-rider && cd ../../",
     "publish-ghost-rider": "cd dist/ng-ghost-rider && npm publish && cd ../../",
-    "build-and-publish": "npm run build-ghost-rider && npm publish-ghost-rider"
+    "build-and-publish": "npm run build-ghost-rider && npm run publish-ghost-rider"
   },
   "private": true,
   "dependencies": {
