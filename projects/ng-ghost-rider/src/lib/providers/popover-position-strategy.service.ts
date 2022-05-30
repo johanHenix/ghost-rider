@@ -178,7 +178,6 @@ export class PopoverPositionStrategy implements PositionStrategy {
 		this._isInitialRender = true;
 		this._lastPosition = null;
 		this._resizeSubscription.unsubscribe();
-		// @ts-ignore
 		this._resizeSubscription = this._viewportRuler.change().subscribe(() => {
 			// When the window is resized, we want to trigger the next reposition as if it
 			// was an initial render, in order for the strategy to pick a new optimal position,
@@ -797,14 +796,12 @@ export class PopoverPositionStrategy implements PositionStrategy {
 
 		this._lastBoundingBoxSize = boundingBoxRect;
 
-		// @ts-ignore
-		extendStyles(this._boundingBox.style, styles);
+		extendStyles(this._boundingBox!.style, styles);
 	}
 
 	/** Resets the styles for the bounding box so that a new positioning can be computed. */
 	private _resetBoundingBoxStyles() {
-		// @ts-ignore
-		extendStyles(this._boundingBox.style, {
+		extendStyles(this._boundingBox!.style, {
 			top: '0',
 			left: '0',
 			right: '0',
