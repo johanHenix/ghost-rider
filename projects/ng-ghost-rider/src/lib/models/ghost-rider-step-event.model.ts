@@ -13,7 +13,7 @@ export enum GhostRiderEventSource {
 }
 
 export interface GhostRiderEvent {
-  type: GhostRiderEventType;
+  type: GhostRiderEventType | null;
   name: string;
   source: GhostRiderEventSource;
 }

@@ -99,10 +99,11 @@ export class GhostRiderStepComponent extends PopoverComponent {
 		this.hasSubSteps = this._navigation.tourGuide.activeStep.hasSubSteps;
 
 		if (this.isSubStep) {
-			// @ts-ignore
-			const siblings = this._navigation.tourGuide.activeStep.parent.subSteps;
-			this.stepIndex = siblings.indexOf(this._navigation.tourGuide.activeStep);
-			this.stepCount = siblings.length;
+			const siblings = this._navigation.tourGuide.activeStep.parent?.subSteps;
+			if (siblings) {
+				this.stepIndex = siblings.indexOf(this._navigation.tourGuide.activeStep);
+				this.stepCount = siblings.length;
+			}
 		} else {
 			this.stepIndex = this._navigation.tourGuide.currentStep;
 			this.stepCount = this._navigation.tourGuide.steps.length;

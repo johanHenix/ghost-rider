@@ -62,8 +62,7 @@ export class PopoverComponent<T = any> implements OnDestroy {
 	public set position(pos: ConnectedPosition) {
 		if (pos !== this._position) {
 			this._position = pos;
-			// @ts-ignore
-			this.nubbinCls = pos ? `ghost-rider-nubbin_${getNubbinPosition(pos)}` : null;
+			this.nubbinCls = pos ? `ghost-rider-nubbin_${getNubbinPosition(pos)}` : null as unknown as string;
 			this._cdr.markForCheck();
 		}
 	}

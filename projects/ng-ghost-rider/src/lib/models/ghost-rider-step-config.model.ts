@@ -13,7 +13,6 @@ export class GhostRiderStepConfig<T = any> {
 
   public position: PopoverPosition = 'below';
   public nubbinPosition: PopoverNubbinPosition = 'auto';
-  // @ts-ignore
   public content: PopoverContent<T>;
 
   /**

@@ -98,19 +98,15 @@ interface PopoverNubbinOffsets {
 
 @Directive()
 export class Popover<T = any> implements OnInit, OnDestroy {
-	// @ts-ignore
 	public _overlayRef: OverlayRef | null;
-	// @ts-ignore
 	private _popoverInstance: PopoverComponent | null;
 
-	// @ts-ignore
 	protected _portal: ComponentPortal<PopoverComponent>;
 	protected _position: PopoverPosition = 'below';
 	protected _nubbinPosition: PopoverNubbinPosition = 'none';
 	protected _disabled: boolean = false;
 	protected _scrollStrategy: () => ScrollStrategy;
 	protected _positionStrategy: PopoverPositionStrategyFactory;
-	// @ts-ignore
 	public isTooltip: boolean;
 	public popoverType: Type<PopoverComponent> = PopoverComponent;
 
@@ -285,8 +281,7 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 
 	/** Shows the popover after the delay in ms, defaults to popover-delay-show or 0ms if no input */
 	public show(delay: number = this.showDelay): void {
-		// @ts-ignore
-		if (this.disabled || !this.content || (this.isPopoverVisible() && !this._popoverInstance.hasTimeout)) {
+		if (this.disabled || !this.content || (this.isPopoverVisible() && !this._popoverInstance?.hasTimeout)) {
 			return;
 		}
 
@@ -377,7 +372,6 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 		this._updatePosition();
 
 		this._overlayRef.detachments()
-			// @ts-ignore
 			.pipe(takeUntil(this._destroyed))
 			.subscribe(() => this._detach());
 
@@ -495,7 +489,6 @@ export class Popover<T = any> implements OnInit, OnDestroy {
 			this._popoverInstance.markForCheck();
 
 			this._ngZone.onMicrotaskEmpty.asObservable().pipe(
-				// @ts-ignore
 				take(1),
 				takeUntil(this._destroyed),
 			).subscribe(() => {

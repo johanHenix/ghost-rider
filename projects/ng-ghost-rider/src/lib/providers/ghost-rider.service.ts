@@ -139,9 +139,7 @@ export class GhostRiderService implements OnDestroy {
   public goToParent(source: GhostRiderEventSource = GhostRiderEventSource.Manual): void {
     if (this.activeTour) {
       const { name } = this._tourGuide.activeStep;
-      // @ts-ignore
-      this.tourGuide.activeStep = this.tourGuide.activeStep.parent;
-      // @ts-ignore
+      this.tourGuide.activeStep = this.tourGuide.activeStep.parent as GhostRiderStep;
       this._goToStep({ type: null, name, source }, true);
     }
   }
@@ -178,7 +176,6 @@ export class GhostRiderService implements OnDestroy {
     if (this.activeTour) {
       const { name } = this._tourGuide.activeStep;
       this._tourGuide.getNextSubStep();
-      // @ts-ignore
       this._goToStep({ type: null, name, source });
     }
   }
@@ -191,7 +188,6 @@ export class GhostRiderService implements OnDestroy {
     if (this.activeTour) {
       const { name } = this._tourGuide.activeStep;
       this._tourGuide.getPreviousSubStep();
-      // @ts-ignore
       this._goToStep({ type: null, name, source }, true);
     }
   }
@@ -223,8 +219,7 @@ export class GhostRiderService implements OnDestroy {
       this.events$.next({ type, name, source });
       hideStepSub.unsubscribe();
     });
-    // @ts-ignore
-    this._tourGuide = undefined;
+    this._tourGuide = undefined as unknown as GhostRiderTourGuide;
   }
 
   /**
@@ -261,8 +256,7 @@ export class GhostRiderService implements OnDestroy {
   public updateWindow(): void {
     if (this._activePopover && this._activePopover?._overlayRef?.backdropElement) {
       this._buildWindow(
-        // @ts-ignore
-        this._steps.get(this._tourGuide.activeStep.name).element.nativeElement.getBoundingClientRect(),
+        this._steps.get(this._tourGuide.activeStep.name)!.element.nativeElement.getBoundingClientRect(),
         this._activePopover._overlayRef,
       );
     }
@@ -290,8 +284,7 @@ export class GhostRiderService implements OnDestroy {
         }
 
         if (this._subs.has('stepAdded')) {
-          // @ts-ignore
-          this._subs.get('stepAdded').unsubscribe();
+          this._subs.get('stepAdded')?.unsubscribe();
           this._subs.delete('stepAdded');
         }
 
@@ -337,16 +330,12 @@ export class GhostRiderService implements OnDestroy {
       this._renderer.removeClass(element.nativeElement, 'ghost-rider-walkthrough-step_active');
 
       if (this._activePopover === popover) {
-        // @ts-ignore
-        this._activePopover = null;
+        this._activePopover = null as unknown as Popover<any>;
       }
-      // @ts-ignore
-      this._hideStep = null;
+      this._hideStep = null as unknown as () => Observable<void>;
 
-      // @ts-ignore
       return defer(() => {
-        // @ts-ignore
-        return popover.popoverInstance.afterHidden().pipe(
+        return popover.popoverInstance!.afterHidden().pipe(
           startWith(null as any),
           last(),
         );
@@ -377,23 +366,19 @@ export class GhostRiderService implements OnDestroy {
     (popover.popoverInstance as GhostRiderStepComponent).details = config;
     // Assign new backdrop and clip path destroyer
     this._removeWindowHandler = () => {
-      // @ts-ignore
-      this._removeWindow(popover._overlayRef.backdropElement);
+      this._removeWindow(popover._overlayRef?.backdropElement as HTMLElement);
     };
 
     if (this._isAsync) {
       // Wait for popover component to be visible before adding styles
-      // @ts-ignore
-      const afterVisibleSub = popover.popoverInstance.afterVisible().subscribe(() => {
-        // @ts-ignore
-        this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef);
+      const afterVisibleSub = popover.popoverInstance?.afterVisible().subscribe(() => {
+        this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef as OverlayRef);
         active$.next(true);
-        afterVisibleSub.unsubscribe();
+        afterVisibleSub?.unsubscribe();
       });
     } else {
       // Since this isn't async, we can just build the new backdrop and set styles ASAP
-      // @ts-ignore
-      this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef);
+      this._buildWindow(element.nativeElement.getBoundingClientRect(), popover._overlayRef as OverlayRef);
     }
   }
 
@@ -417,8 +402,7 @@ export class GhostRiderService implements OnDestroy {
     //   this._renderer.insertBefore(overlayRef.backdropElement.parentElement, this._uiMask, overlayRef.backdropElement);
     // }
 
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.nextSibling, 'zIndex', 9001);
+    this._renderer.setStyle(overlayRef.backdropElement?.nextSibling, 'zIndex', 9001);
     this._renderer.setStyle( // Should we remove this style on tear down?
       overlayRef.backdropElement,
       'clipPath',
@@ -436,8 +420,7 @@ export class GhostRiderService implements OnDestroy {
         )`,
     );
 
-    // @ts-ignore
-    if (!overlayRef.backdropElement.firstChild) {
+    if (!overlayRef.backdropElement?.firstChild) {
       this._renderer.appendChild(overlayRef.backdropElement, this._renderer.createElement('div'));
     }
 
@@ -445,19 +428,14 @@ export class GhostRiderService implements OnDestroy {
     const borderRadius = buffer;
     const distributionSize = buffer / 2;
 
-    // Should this be 'relative'?
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'position', 'absolute');
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'background', 'white');
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'width', `${rect.width + buffer}px`);
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'height', `${rect.height + buffer}px`);
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'clipPath', `inset(0 round ${borderRadius}px)`);
-    // @ts-ignore
-    this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'inset', `${rect.y - distributionSize}px 0 0 ${rect.x - distributionSize}px`);
+    if (overlayRef.backdropElement?.firstChild) {
+      this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'position', 'absolute');
+      this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'background', 'white');
+      this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'width', `${rect.width + buffer}px`);
+      this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'height', `${rect.height + buffer}px`);
+      this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'clipPath', `inset(0 round ${borderRadius}px)`);
+      this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'inset', `${rect.y - distributionSize}px 0 0 ${rect.x - distributionSize}px`);
+    }
   }
 
   /**
