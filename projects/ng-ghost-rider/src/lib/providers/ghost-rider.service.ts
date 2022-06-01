@@ -11,19 +11,30 @@ import { GhostRiderStep } from '../models/ghost-rider-step.model';
 import { OverlayRef } from '@angular/cdk/overlay';
 
 /**
+ * Used for the '_subs' map prop keys
+ */
+enum SubKeys {
+  StepAdded = 'stepAdded',
+  Events = 'events'
+}
+
+/**
  * Service to control guided tours and walkthrough steps
  */
 @Injectable({ providedIn: 'root' })
 export class GhostRiderService implements OnDestroy {
   private readonly _stepAdded$ = new Subject<string>();
-  private readonly _subs = new Map<string, Subscription>();
+  // Add keys to the 'SubKeys' enum pleez
+  private readonly _subs = new Map<SubKeys, Subscription>();
   private readonly _steps = new Map<string, GhostRiderStepDetails>(); // name => step
   private readonly _popoverFactory: GhostRiderPopoverFactory;
   private readonly _renderer: Renderer2;
 
   private _tourGuide: GhostRiderTourGuide;
   private _activePopover: Popover;
-  private _uiMask: HTMLDivElement | null;
+  // TODO: Implement an optional UI masking element to override clicks from the user
+  // private _uiMask: HTMLDivElement | null;
+
   private _isAsync: boolean = false; // Flag to use asynchronous or synchronous methods
 
   private _hideStep: () => Observable<void>;
@@ -54,7 +65,7 @@ export class GhostRiderService implements OnDestroy {
      * output so we can react to event from specific components
      */
     this._subs.set(
-      'events',
+      SubKeys.Events,
       this.events$.subscribe((event) => {
         if (this._steps.has(event.name)) {
           this._steps.get(event.name)?.ghostRiderStepEvent.emit(event);
@@ -283,9 +294,12 @@ export class GhostRiderService implements OnDestroy {
           this.events$.next(event);
         }
 
-        if (this._subs.has('stepAdded')) {
-          this._subs.get('stepAdded')?.unsubscribe();
-          this._subs.delete('stepAdded');
+        if (this._subs.has(SubKeys.StepAdded)) {
+          const stepAdded = this._subs.get(SubKeys.StepAdded);
+          if (stepAdded) {
+            stepAdded.unsubscribe();
+            this._subs.delete(SubKeys.StepAdded);
+          }
         }
 
         const hasStep = this._steps.has(this._tourGuide.activeStep.name);
@@ -300,7 +314,7 @@ export class GhostRiderService implements OnDestroy {
           this._showStep();
         } else {
           this._subs.set(
-            'stepAdded',
+            SubKeys.StepAdded,
             this._stepAdded$.pipe(
               first((step) => step === this._tourGuide.activeStep.name),
             ).subscribe(() => {
@@ -326,7 +340,7 @@ export class GhostRiderService implements OnDestroy {
     this._hideStep = (): Observable<void> => {
       popover.hide();
       active$.next(false);
-      this._removeMask();
+      // this._removeMask();
       this._renderer.removeClass(element.nativeElement, 'ghost-rider-walkthrough-step_active');
 
       if (this._activePopover === popover) {
@@ -450,16 +464,16 @@ export class GhostRiderService implements OnDestroy {
       }
     }
 
-    this._removeMask();
+    // this._removeMask();
   }
 
-  /**
-   * Removes the masking div to prevent clicks
-   */
-  private _removeMask(): void {
-    if (this._uiMask) {
-      this._uiMask.remove();
-      this._uiMask = null;
-    }
-  }
+  // /**
+  //  * Removes the masking div to prevent clicks
+  //  */
+  // private _removeMask(): void {
+  //   if (this._uiMask) {
+  //     this._uiMask.remove();
+  //     this._uiMask = null;
+  //   }
+  // }
 }

@@ -4,7 +4,7 @@ $padding: 1rem;
 	position: relative;
 	border-radius: 0.25rem;
 	max-width: 20rem;
-	z-index: 6000;
+	// z-index: 6000;
 	background-color: white;
 	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
 
@@ -41,7 +41,7 @@ $padding: 1rem;
 		justify-content: space-between;
 		align-items: center;
 		border-top: 1px solid #aaa;
-		padding: .25rem 0 .25rem 1rem;
+		padding: $padding;
 
 		.ghost-rider_back-button,
 		.ghost-rider_next-button,

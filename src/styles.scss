@@ -1,3 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '../dist/ng-ghost-rider/styles/ghost-rider.scss';
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Graduate&display=swap');
+
+* {
+	font-family: 'Comfortaa', sans-serif;
+	font-size: 16px;
+}
+
+// @font-face {
+// 	font-family: 'Comfortaa', cursive;
+// 	src: url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Graduate&display=swap');
+// }
+
+// * {
+// 	font-family: 'Comfortaa';
+// }
