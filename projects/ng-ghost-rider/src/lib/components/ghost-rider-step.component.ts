@@ -13,7 +13,7 @@ import { PopoverComponent } from './popover.component';
 			role="dialog"
 		>
 			<div class="ghost-rider-popover__header">
-				<h1>{{ details.title || '&nbsp;' }}</h1>
+				<h2 class="ghost-rider_title">{{ details.title || '&nbsp;' }}</h2>
 				<div
 					(click)="close()"
 					class="ghost-rider_close-button"
@@ -22,8 +22,8 @@ import { PopoverComponent } from './popover.component';
 						xmlns="http://www.w3.org/2000/svg"
 						aria-hidden="true"
 						role="img"
-						width="1.5em"
-						height="1.5em"
+						width="1.3em"
+						height="1.3em"
 						preserveAspectRatio="xMidYMid meet"
 						viewBox="0 0 1024 1024"
 					>
@@ -40,7 +40,7 @@ import { PopoverComponent } from './popover.component';
 			</div>
 
 			<div class="ghost-rider-popover__footer">
-				<span class="slds-text-title">
+				<span>
 					Step {{ stepIndex + 1 }} of {{ stepCount }}
 				</span>
 				<div>

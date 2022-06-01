@@ -1,29 +1,59 @@
-// 'X' close button icon
-.ghost-rider_close-button {
-	width: fit-content;
-	height: fit-content;
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	cursor: pointer;
-}
+$padding: 1rem;
 
-.ghost-rider-popover__footer {
-	display: flex;
-	justify-content: space-between;
-	border-top: 1px solid #aaa;
-	padding: .25rem 0;
+.ghost-rider-popover {
+	position: relative;
+	border-radius: 0.25rem;
+	max-width: 20rem;
+	z-index: 6000;
+	background-color: white;
+	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
 
-	.ghost-rider_back-button,
-	.ghost-rider_next-button,
-	.ghost-rider_complete-button {
-		border: none;
-		border-radius: 5px;
-		background-color: #666;
-		color: white;
-		padding: .5rem;
-		margin: 0 .15rem;
-		cursor: pointer;
+	.ghost-rider-popover__header {
+		padding: $padding;
+
+		.ghost-rider_title {
+			margin: 0;
+		}
+
+		// 'X' close button icon
+		.ghost-rider_close-button {
+			width: fit-content;
+			height: fit-content;
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			cursor: pointer;
+			transition: .3s;
+
+			&:hover {
+				opacity: .7;
+				transform: scale(1.2);
+			}
+		}
+	}
+
+	.ghost-rider-popover__body {
+		padding: $padding;
+	}
+
+	.ghost-rider-popover__footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px solid #aaa;
+		padding: .25rem 0 .25rem 1rem;
+
+		.ghost-rider_back-button,
+		.ghost-rider_next-button,
+		.ghost-rider_complete-button {
+			border: none;
+			border-radius: 5px;
+			background-color: #666;
+			color: white;
+			padding: .5rem;
+			margin: 0 .15rem;
+			cursor: pointer;
+		}
 	}
 }
 
@@ -50,15 +80,6 @@
 	visibility: visible;
 	opacity: 1;
 	transition: opacity 0.4s linear;
-}
-
-.ghost-rider-popover {
-	position: relative;
-	border-radius: 0.25rem;
-	max-width: 20rem;
-	z-index: 6000;
-	background-color: white;
-	box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
 }
 
 .ghost-rider-nubbin_top:before,
