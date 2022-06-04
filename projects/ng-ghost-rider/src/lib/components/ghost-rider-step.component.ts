@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
+import { GhostRiderNavigation } from '../models/ghost-rider-navigation.model';
 import { GhostRiderStepConfig } from '../models/ghost-rider-step-config.model';
 import { GhostRiderEventSource } from '../models/ghost-rider-step-event.model';
-import { GhostRiderNavigation, GHOST_RIDER_NAVIGATION } from '../providers/ghost-rider-navigation.token';
+import { GHOST_RIDER_NAVIGATION } from '../tokens/ghost-rider-navigation.token';
 import { PopoverComponent } from './popover.component';
 
 @Component({
