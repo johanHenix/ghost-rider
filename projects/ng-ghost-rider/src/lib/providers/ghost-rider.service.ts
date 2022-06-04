@@ -2,7 +2,7 @@ import { Injectable, Injector, OnDestroy, Renderer2, RendererFactory2 } from '@a
 import { BehaviorSubject, defer, Observable, of, Subject, Subscription } from 'rxjs';
 import { first, last, startWith } from 'rxjs/operators';
 import { Popover } from '../models/ghost-rider-popover.model';
-import { GhostRiderPopoverFactory } from '../providers/ghost-rider-popover-factory.service';
+import { GhostRiderPopoverFactory } from './ghost-rider-popover-factory.service';
 import { GhostRiderStepComponent } from '../components/ghost-rider-step.component';
 import { GhostRiderTourGuide } from '../helpers/ghost-rider-tour-guide';
 import { GhostRiderEvent, GhostRiderEventSource, GhostRiderEventType } from '../models/ghost-rider-step-event.model';

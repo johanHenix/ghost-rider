@@ -44,8 +44,8 @@ import { take, takeUntil } from 'rxjs/operators';
 
 import { PopoverComponent } from '../components/popover.component';
 
-import { GHOST_RIDER_POPOVER_SCROLL_STRATEGY } from '../providers/popover-scroll-strategy.token';
-import { GhostRiderPopoverContainer, GHOST_RIDER_POPOVER_CONTAINER } from '../providers/popover-container.token';
+import { GHOST_RIDER_POPOVER_SCROLL_STRATEGY } from '../tokens/popover-scroll-strategy.token';
+import { GhostRiderPopoverContainer, GHOST_RIDER_POPOVER_CONTAINER } from '../tokens/popover-container.token';
 import {
 	PopoverPositionStrategy,
 	PopoverPositionStrategyFactory,

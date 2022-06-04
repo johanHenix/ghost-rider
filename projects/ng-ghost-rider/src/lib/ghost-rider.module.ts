@@ -18,8 +18,8 @@ import { GhostRiderStepPreviousDirective } from './directives/ghost-rider-step-p
 import { GHOST_RIDER_POPOVER_POSITION_STRATEGY_FACTORY_PROVIDER } from './providers/popover-position-strategy.service';
 import { GHOST_RIDER_OVERLAY_CONTAINER_PROVIDER } from './providers/overlay-container.service';
 import { GhostRiderService } from './providers/ghost-rider.service';
-import { GHOST_RIDER_POPOVER_SCROLL_STRATEGY_FACTORY_PROVIDER } from './providers/popover-scroll-strategy.token';
-import { GHOST_RIDER_POPOVER_CONTAINER_FACTORY_PROVIDER } from './providers/popover-container.token';
+import { GHOST_RIDER_POPOVER_SCROLL_STRATEGY_FACTORY_PROVIDER } from './tokens/popover-scroll-strategy.token';
+import { GHOST_RIDER_POPOVER_CONTAINER_FACTORY_PROVIDER } from './tokens/popover-container.token';
 import { GHOST_RIDER_NAVIGATION } from './tokens/ghost-rider-navigation.token';
 
 const DIRECTIVES = [
