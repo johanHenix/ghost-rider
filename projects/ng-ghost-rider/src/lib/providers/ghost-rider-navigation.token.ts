@@ -14,4 +14,6 @@ export interface GhostRiderNavigation {
 	hideStep(): void;
 }
 
-export const GHOST_RIDER_NAVIGATION = new InjectionToken<GhostRiderNavigation>('GhostRiderNavigation');
+export const GHOST_RIDER_NAVIGATION = new InjectionToken<GhostRiderNavigation>(
+	'GhostRiderNavigation'
+);
