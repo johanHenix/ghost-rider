@@ -1,14 +1,14 @@
 {
   "name": "ng-ghost-rider",
-  "version": "0.0.16-beta",
+  "version": "0.0.17-beta",
   "license": "MIT",
   "repository": {
     "url": "https://github.com/freddysilber/ghost-rider"
   },
   "peerDependencies": {
-    "@angular/common": "^13.3.3",
-    "@angular/core": "^13.3.3",
-    "@angular/cdk": "^13.3.3"
+    "@angular/common": ">=13.3.3",
+    "@angular/core": ">=13.3.3",
+    "@angular/cdk": ">=13.3.3"
   },
   "dependencies": {
     "tslib": "^2.2.0"
