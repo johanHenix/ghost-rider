@@ -18,6 +18,8 @@ enum SubKeys {
   Events = 'events'
 }
 
+const ACTIVE_TARGET_CLASS: string = `ghost-rider-walkthrough-step_active`;
+
 /**
  * Service to control guided tours and walkthrough steps
  */
@@ -341,7 +343,10 @@ export class GhostRiderService implements OnDestroy {
       popover.hide();
       active$.next(false);
       // this._removeMask();
-      this._renderer.removeClass(element.nativeElement, 'ghost-rider-walkthrough-step_active');
+      this._renderer.removeClass(
+        element.nativeElement,
+        ACTIVE_TARGET_CLASS
+      );
 
       if (this._activePopover === popover) {
         this._activePopover = null as unknown as Popover<any>;
@@ -357,7 +362,10 @@ export class GhostRiderService implements OnDestroy {
     };
 
     // Custom class that we can use too style the target element
-    this._renderer.addClass(element.nativeElement, 'ghost-rider-walkthrough-step_active');
+    this._renderer.addClass(
+      element.nativeElement,
+      ACTIVE_TARGET_CLASS
+    );
 
     popover.position = config.position;
     popover.nubbinPosition = config.nubbinPosition;

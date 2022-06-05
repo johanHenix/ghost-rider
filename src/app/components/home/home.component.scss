@@ -1,3 +1,26 @@
+@mixin center {
+	text-align: center;
+}
 div.home-container {
 	width: 25%;
+}
+.welcome-to-dev {
+	font-size: 4rem;
+	@include center();
+}
+
+.action-director {
+	font-size: 2rem;
+	@include center();
+}
+
+button {
+	border: none;
+	border-radius: 5px;
+	background-color: #eee;
+	padding: 1rem;
+
+	&:hover {
+		background-color: rgb(219, 219, 219);
+	}
 }

@@ -25,7 +25,9 @@ import { ViewportRuler, CdkScrollable, ViewportScrollPosition } from '@angular/c
 
 import { Observable, Subscription, Subject } from 'rxjs';
 
-import { GhostRiderPopoverContainer, GhostRiderRootPopoverContainer } from '../tokens/popover-container.token';
+// Providers
+import { GhostRiderPopoverContainer } from '../tokens/popover-container.token';
+import { GhostRiderRootPopoverContainer } from '../providers/popover-container.service';
 
 /** Class to be added to the overlay bounding box. */
 const boundingBoxClass = 'cdk-overlay-connected-position-bounding-box';
