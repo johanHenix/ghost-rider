@@ -33,7 +33,6 @@ export class HomeComponent implements OnDestroy {
 	}
 
 	public startTour(): void {
-		console.log('starting tour');
 		this._ghostRiderService.start(
 			'tour',
 			[
