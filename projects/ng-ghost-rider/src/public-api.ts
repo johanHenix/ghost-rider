@@ -2,8 +2,8 @@
  * Public API Surface of ng-ghost-rider
  */
 
-export * from './lib/providers/ghost-rider.service';
-export * from './lib/ghost-rider.module';
+// Modules
+export { GhostRiderModule } from './lib/ghost-rider.module';
 
 // Directives
 export { GhostRiderStepDirective } from './lib/directives/ghost-rider-step.directive';
@@ -25,3 +25,4 @@ export {
 } from './lib/models/ghost-rider-step-event.model';
 
 // Providers
+export { GhostRiderService } from './lib/providers/ghost-rider.service';
