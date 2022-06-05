@@ -3,7 +3,9 @@
 A library for creating guided tours in angular.
 Ghost ride the whip!
 
-![Ghost rider step](assets/images/step.png "Ghost rider step")
+<p align="center">
+	<img src="https://github.com/freddysilber/ghost-rider/blob/main/assets/images/step.png"/>
+</p>
 
 ## Usage
 
