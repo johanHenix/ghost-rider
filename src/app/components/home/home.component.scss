@@ -1,9 +1,11 @@
 @mixin center {
 	text-align: center;
 }
+
 div.home-container {
 	width: 25%;
 }
+
 .welcome-to-dev {
 	font-size: 4rem;
 	@include center();
