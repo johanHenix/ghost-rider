@@ -16,8 +16,16 @@ Ghost ride the whip!
 2. Add the stylesheet to your global styles file
 > After you import the stylesheet, you can override the css / scss to fit your application's needs 😃
 ```scss
-@import 'ng-ghost-rider/styles/ghost-rider.scss';
+@import '../node_modules/ng-ghost-rider/styles/ghost-rider.scss';
 ```
+or
+```json
+"styles": [
+  "src/styles.scss",
+  "./node_modules/ng-ghost-rider/styles/ghost-rider.scss"
+],
+```
+in your ```angular.json``` file
 
 3. Add the module to your application
 ```javascript
