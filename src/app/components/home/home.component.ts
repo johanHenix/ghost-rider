@@ -1,8 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { GhostRiderEvent, GhostRiderEventType, GhostRiderService } from 'ng-ghost-rider';
-import { GhostRiderStep } from 'projects/ng-ghost-rider/src/lib/models/ghost-rider-step.model';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { GhostRiderEvent, GhostRiderEventType, GhostRiderService, GhostRiderStep } from 'ng-ghost-rider';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-home',
