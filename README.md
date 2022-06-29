@@ -1,7 +1,6 @@
-# NgGhostRider
-
-A library for creating guided tours in angular.
-Ghost ride the whip!
+<h1 align="center">👻 Ghost Rider</h1>
+<p align="center">A library for creating guided tours in angular. Ghost ride the whip!</p>
+<hr/>
 
 [![npm version](https://badge.fury.io/js/ng-ghost-rider.svg)](https://badge.fury.io/js/ng-ghost-rider)
 
@@ -9,12 +8,20 @@ Ghost ride the whip!
 	<img src="https://github.com/freddysilber/ghost-rider/blob/main/assets/images/step.png"/>
 </p>
 
+## Features
+
+✅ Router support<br/>
+✅ Styleable content<br/>
+✅ Ships with events<br/>
+✅ No dependencies<br/>
+✅ 100% Angular<br/>
+✅ Multiple tour support<br/>
+
 ## Usage
 
 1. Run ```npm i ng-ghost-rider```
-
 2. Add the stylesheet to your global styles file
-> After you import the stylesheet, you can override the css / scss to fit your application's needs 😃
+> 💡 After you import the stylesheet, you can override the css / scss to fit your application's needs 😃
 ```scss
 @import '../node_modules/ng-ghost-rider/styles/ghost-rider.scss';
 ```
@@ -84,7 +91,7 @@ export class AppComponent {
         new GhostRiderStep('firstStep'),
         new GhostRiderStep('secondStep'),
         new GhostRiderStep('thirdStep'),
-        // Optionally provide sub steps (for inner steps within the parent step... coming soon!)
+        // 💡 Optionally provide sub steps (for inner steps within the parent step... coming soon!)
         /*
         new GhostRiderStep(
           'thirdStepWithSubSteps',
@@ -110,15 +117,15 @@ Feel free to report any bugs / issues [here](https://github.com/freddysilber/gho
 2. Build the package ```ng build ng-ghost-rider```
 3. Run ```ng serve```for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
+## 🔨 Build
 
 Run `ng build ng-ghost-rider` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Publishing
+## 🚀 Publishing
 
 After building your library with `ng build ng-ghost-rider`, go to the dist folder `cd dist/ng-ghost-rider` and run `npm publish`.
 
-## Running unit tests
+## 🧪 Running unit tests
 
 Run `ng test ng-ghost-rider` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
