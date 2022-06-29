@@ -1,0 +1,11 @@
+identifier: ld5f0f87w5735404
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: ghost-rider
+homeFolder: /Users/freddysilber/Documents/GitHub/ghost-rider
+distFolder: dist/ghost-rider
+outDir: /Users/freddysilber/Documents/GitHub/ghost-rider/dist/static
+handle404: ''
+allowErrorCollect: true
