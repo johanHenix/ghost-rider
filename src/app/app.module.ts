@@ -8,13 +8,13 @@ import { HomeComponent } from './components/home/home.component';
 import { MoviesComponent } from './components/movies/movies.component';
 
 const COMPONENTS = [
+  AppComponent,
   HomeComponent,
   MoviesComponent,
 ];
 
 @NgModule({
   declarations: [
-    AppComponent,
     COMPONENTS
   ],
   imports: [
