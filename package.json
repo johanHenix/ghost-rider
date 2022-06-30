@@ -14,7 +14,8 @@
     "build-and-publish": "npm run build-ghost-rider && npm run publish-ghost-rider",
     "------------------- SCULLY -------------------": "",
     "scully-build": "npx scully --cf scully.ghost-rider.config.ts",
-    "scully-serve": "npx scully serve"
+    "scully-serve": "npx scully serve",
+    "scully": "scully",
   },
   "private": true,
   "dependencies": {
