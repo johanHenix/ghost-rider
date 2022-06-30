@@ -3,7 +3,7 @@ name: Scully Publish to GH-Pages
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -13,5 +13,5 @@ jobs:
       - uses: cmgriffing/scully-gh-pages-action@v9
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: gh-pages
+          deploy-branch: main
           build-args: --base-href ghost-rider
