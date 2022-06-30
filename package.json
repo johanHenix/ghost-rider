@@ -11,7 +11,10 @@
     "------------------- GHOST RIDER -------------------": "",
     "build-ghost-rider": "cd projects/ng-ghost-rider && ng build ng-ghost-rider && cd ../../",
     "publish-ghost-rider": "cd dist/ng-ghost-rider && npm publish && cd ../../",
-    "build-and-publish": "npm run build-ghost-rider && npm run publish-ghost-rider"
+    "build-and-publish": "npm run build-ghost-rider && npm run publish-ghost-rider",
+    "------------------- SCULLY -------------------": "",
+    "scully-build": "npx scully --cf scully.ghost-rider.config.ts",
+    "scully-serve": "npx scully serve"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +27,8 @@
     "@angular/platform-browser": "^14.0.4",
     "@angular/platform-browser-dynamic": "^14.0.4",
     "@angular/router": "^14.0.4",
+    "@scullyio/init": "^2.1.36",
+    "@scullyio/scully-plugin-puppeteer": "^2.1.36",
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.5"
