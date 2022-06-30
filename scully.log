@@ -20,3 +20,8 @@ Folder "./scully" doesn't seem to contain custom plugins Deprecation Notice:
 
 
 
+Folder "./scully" doesn't seem to contain custom plugins
+----------------------------------Using stored unhandled routes!.   To discover new routes in the angular app use "npm run scully -- --scanRoutes"----------------------------------
+
+
+
