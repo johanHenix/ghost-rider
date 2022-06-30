@@ -15,7 +15,7 @@
     "------------------- SCULLY -------------------": "",
     "scully-build": "npx scully --cf scully.ghost-rider.config.ts",
     "scully-serve": "npx scully serve",
-    "scully": "scully",
+    "scully": "scully"
   },
   "private": true,
   "dependencies": {
