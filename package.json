@@ -29,6 +29,7 @@
     "@angular/router": "^14.0.4",
     "@scullyio/init": "^2.1.36",
     "@scullyio/scully-plugin-puppeteer": "^2.1.36",
+    "ng-ghost-rider": "^0.0.17-beta",
     "rxjs": "~7.5.5",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.5"
