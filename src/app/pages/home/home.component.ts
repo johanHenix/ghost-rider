@@ -1,5 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { PortalModule } from '@angular/cdk/portal';
+import { GhostRiderModule } from 'ng-ghost-rider';
 import { GhostRiderEvent, GhostRiderEventType, GhostRiderService, GhostRiderStep } from 'ng-ghost-rider';
 import { Subscription } from 'rxjs';
 
@@ -7,6 +9,12 @@ import { Subscription } from 'rxjs';
 	selector: 'app-home',
 	templateUrl: 'home.component.html',
 	styleUrls: ['home.component.scss'],
+	standalone: true,
+	imports: [
+		GhostRiderModule,
+		PortalModule,
+		RouterModule,
+	],
 })
 export class HomeComponent implements OnDestroy {
 	private _subs: Map<string, Subscription> = new Map();
@@ -15,10 +23,7 @@ export class HomeComponent implements OnDestroy {
 		private readonly _router: Router,
 		private readonly _ghostRiderService: GhostRiderService,
 	) {
-		/**
-		 * We can kick off here... or do it on an 'action'
-		 */
-		// this.startTour();;
+		this.startTour();
 	}
 
 	ngOnDestroy(): void {
@@ -27,7 +32,7 @@ export class HomeComponent implements OnDestroy {
 
 	public handleEvent(event: GhostRiderEvent): void {
 		if (event.type === GhostRiderEventType.Next) {
-			this._router.navigate(['movies']);
+			this._router.navigate(['documentation']);
 		}
 	}
 
@@ -35,7 +40,8 @@ export class HomeComponent implements OnDestroy {
 		this._ghostRiderService.start(
 			'tour',
 			[
-				new GhostRiderStep('firstStep'),
+				new GhostRiderStep('title'),
+				new GhostRiderStep('subTitle'),
 				new GhostRiderStep('secondStep'),
 				new GhostRiderStep('thirdStep'),
 				new GhostRiderStep('fourthStep'),

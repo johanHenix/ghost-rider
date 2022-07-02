@@ -4,13 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { GhostRiderModule } from 'ng-ghost-rider';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { MoviesComponent } from './components/movies/movies.component';
+import { GithubCorner } from './components/github-corner/github-corner.component';
 
 const COMPONENTS = [
   AppComponent,
-  HomeComponent,
-  MoviesComponent,
+  GithubCorner,
 ];
 
 @NgModule({
