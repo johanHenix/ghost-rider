@@ -1,4 +1,3 @@
-<!-- <h1 align="center">👻 Ghost Rider</h1> -->
 <h1 align="center">
 <img valign="bottom" src="https://github.com/freddysilber/ghost-rider/blob/main/src/assets/images/ghost.svg" style="width: 40px;" width="40px"> Ghost Rider
 </h1>
