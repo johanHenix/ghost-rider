@@ -54,7 +54,7 @@ export class AppModule { }
 
 4. Then, set up any elements you want to be used as steps
 ```html
-<!-- These directives can be placed anywhere in you application -->
+<!-- These directives can be placed anywhere in your application -->
 <h1 [ghostRiderStep]="{
   name: 'tour.firstStep',
   title: 'Step 1 title',
