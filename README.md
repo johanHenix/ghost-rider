@@ -21,7 +21,7 @@
 
 ## Usage
 
-1. Run ```npm i ng-ghost-rider```
+1. Install the library with ```npm i ng-ghost-rider```
 2. Add the stylesheet to your global styles file
 > 💡 After you import the stylesheet, you can override the css / scss to fit your application's needs 😃
 ```scss
