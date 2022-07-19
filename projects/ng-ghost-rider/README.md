@@ -116,16 +116,16 @@ Feel free to report any bugs / issues [here](https://github.com/freddysilber/gho
 
 ### Local Dev
 1. Fork and clone this repo
-2. Build the package ```ng build ng-ghost-rider```
-3. Run ```ng serve```for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Build the package ```npm run ghost-rider:build``` or ```pnpm run ghost-rider:build```
+3. Run ```ng serve```for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files (you'll have to build the package after changing the source code under 'projects').
 
 ## 🔨 Build
 
-Run `ng build ng-ghost-rider` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run ghost-rider:build` or `pnpm run ghost-rider:build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## 🚀 Publishing
 
-After building your library with `ng build ng-ghost-rider`, go to the dist folder `cd dist/ng-ghost-rider` and run `npm publish`.
+Run ```npm run publish``` or ```pnpm run publish``` to build the package and publish a new version to npm.
 
 ## 🧪 Running unit tests
 
