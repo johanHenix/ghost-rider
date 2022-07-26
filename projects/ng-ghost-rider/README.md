@@ -5,6 +5,8 @@
 <hr/>
 
 [![npm version](https://badge.fury.io/js/ng-ghost-rider.svg)](https://badge.fury.io/js/ng-ghost-rider)
+[![GitHub issues](https://img.shields.io/github/issues/freddysilber/ghost-rider)](https://github.com/freddysilber/ghost-rider/issues)
+[![GitHub license](https://img.shields.io/github/license/freddysilber/ghost-rider)](https://github.com/freddysilber/ghost-rider/blob/main/LICENSE)
 
 <p align="center">
 	<img src="https://github.com/freddysilber/ghost-rider/blob/main/assets/images/step.png"/>
