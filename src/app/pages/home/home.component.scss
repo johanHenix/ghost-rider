@@ -4,11 +4,11 @@
 :host {
 	@include flex-container-vertical();
 	@include flexi-fill-height();
+	padding: 2rem;
 }
 
 .casper {
 	font-family: 'Casper', sans-serif;
-	font-size: 10em;
 	text-shadow:
 		0 3px 1px white,
 		0 2px 1px white,

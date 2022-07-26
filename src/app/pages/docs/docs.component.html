@@ -1,9 +1,9 @@
 <header class="text-gray-600 body-font">
 	<div class="container flex flex-wrap p-5 flex-col md:flex-row items-center">
-		<a class="flex title-font font-medium items-center text-red-900 mb-4 md:mb-0">
+		<a class="title-font font-medium items-center text-red-900 mb-4 md:mb-0">
 			<app-logo style="width: 50px;"></app-logo>
 			<span
-				class="ml-3 text-xl"
+				class="text-xl"
 				[ghostRiderStep]="{
 					name: 'tour.docsPage',
 					title: 'Check out the Docs',
@@ -16,7 +16,7 @@
 		</a>
 		<nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
 			<a
-				class="mr-5 hover:text-red-900"
+				class="hover:text-red-900"
 				[routerLink]="['/home']"
 				[ghostRiderStep]="{
 					name: 'tour.homeAnchor',

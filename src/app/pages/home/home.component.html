@@ -9,8 +9,8 @@
 	(click)="startTour()"
 >
 	<!-- class="slime" -->
-	<h1 class="casper text-center w-fit m-0 px-6 cursor-pointer text-black font-thin">Ghost Rider</h1>
-	<h2 class="text-2xl text-white text-center">Create guided tours in Angular</h2>
+	<h1 class="casper text-9xl text-center w-fit m-0 mt-9 cursor-pointer text-black font-thin">Ghost Rider</h1>
+	<h2 class="text-2xl text-white text-center px-6">Create guided tours in Angular</h2>
 </div>
 <!-- Documentation Step / Button -->
 <div class="flex justify-center mt-4">
@@ -28,14 +28,14 @@
 	</button>
 </div>
 <!-- Details -->
-<div class="details-container text-white grid">
+<div class="details-container text-white lg:grid">
 	<div
 		class="step-container"
 		[ghostRiderStep]="{
 			name: 'tour.routerSupport',
 			title: 'Why Routing?',
 			content: 'It would be frightening if your app didn\'t have multiple pages.',
-			position: 'after'
+			position: 'below'
 		}"
 	>
 		<ng-container *ngTemplateOutlet="sellingPointTpl; context: {
