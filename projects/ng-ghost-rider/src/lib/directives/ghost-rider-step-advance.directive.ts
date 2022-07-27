@@ -7,9 +7,17 @@ import { GhostRiderEventSource } from '../models/ghost-rider-step-event.model';
  */
 @Directive({ selector: '[ghostRiderStepAdvance]' })
 export class GhostRiderStepAdvanceDirective {
+
+  /**
+   * If the element has this directive and is clicked, this output will be called and emit a 'MouseEvent' or 'Click' event
+   */
   @Output()
   public ghostRiderStepAdvance: EventEmitter<MouseEvent> = new EventEmitter();
 
+  /**
+   * 
+   * @param _ghostRiderService Injects the service required to perform basic 'tour' operations and lifecycle
+   */
   constructor(
     private readonly _ghostRiderService: GhostRiderService,
   ) { }
