@@ -5,7 +5,6 @@ export class GhostRiderTourGuide {
 	public currentStep: number = 0;
 
 	/**
-	 * 
 	 * @param tourNamespace A unique string for to scope a tour
 	 * @param steps List of 'Steps' to use for the tour
 	 */

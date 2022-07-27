@@ -43,11 +43,11 @@ export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, 
 
   private readonly _subs: Subscription[] = [];
 
-	constructor(
+  constructor(
     public readonly element: ElementRef<HTMLElement>,
     public readonly vcr: ViewContainerRef,
-		private readonly _ghostRiderService: GhostRiderService,
-	) { }
+    private readonly _ghostRiderService: GhostRiderService,
+  ) { }
 
   ngOnInit(): void {
     if (this.config.name && this.config.shouldRegister) {
