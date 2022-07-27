@@ -9,5 +9,9 @@ export interface GhostRiderStepDetails<T = any> {
   element: ElementRef<HTMLElement>;
   vcr: ViewContainerRef;
   ghostRiderStepEvent: EventEmitter<GhostRiderEvent>;
+
+  /**
+   * tracks if the tour is active
+   */
   active$: Subject<boolean>;
 }

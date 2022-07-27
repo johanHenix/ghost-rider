@@ -80,11 +80,25 @@ import { PopoverComponent } from './popover.component';
 	styles: [],
 })
 export class GhostRiderStepComponent extends PopoverComponent {
+
+	/**
+	 * This is the index of the current step
+	 */
 	public stepIndex: number;
+
+	/**
+	 * This is the total number of tour steps registered in the tour
+	 */
 	public stepCount: number;
 	public stepName: string;
+	/**
+	 * Flag for the last step
+	 */
 	public isLastStep: boolean;
 	public hasSubSteps: boolean;
+	/**
+	 * Holds the details for the 'GhostRiderStepComponent' details prop
+	 */
 	public details: GhostRiderStepConfig;
 
 	public readonly isSubStep: boolean;
