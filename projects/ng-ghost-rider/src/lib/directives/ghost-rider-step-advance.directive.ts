@@ -3,7 +3,7 @@ import { GhostRiderService } from '../providers/ghost-rider.service';
 import { GhostRiderEventSource } from '../models/ghost-rider-step-event.model';
 
 /**
- * Goes to the next step when clicked
+ * Goes to the next step in the tour when clicked
  */
 @Directive({ selector: '[ghostRiderStepAdvance]' })
 export class GhostRiderStepAdvanceDirective {
@@ -14,6 +14,9 @@ export class GhostRiderStepAdvanceDirective {
     private readonly _ghostRiderService: GhostRiderService,
   ) { }
 
+  /**
+   * @param event MouseEvent - data from click in the UI
+   */
   @HostListener('click', ['$event'])
   public advance(event: MouseEvent): void {
     this.ghostRiderStepAdvance.emit(event);

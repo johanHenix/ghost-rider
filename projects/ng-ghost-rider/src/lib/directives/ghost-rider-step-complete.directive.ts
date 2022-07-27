@@ -12,6 +12,9 @@ export class GhostRiderStepCompleteDirective {
     private readonly _ghostRiderService: GhostRiderService,
   ) { }
 
+  /**
+   * When clicked, this will complete the tour all together
+   */
   @HostListener('click')
   public complete(): void {
     this._ghostRiderService.complete(GhostRiderEventSource.Directive);

@@ -12,6 +12,9 @@ export class GhostRiderStepPreviousDirective {
     private readonly _ghostRiderService: GhostRiderService,
   ) { }
 
+  /**
+   * Goes back to the previous step in the tour when the element is clicked
+   */
   @HostListener('click')
   public previous(): void {
     this._ghostRiderService.back(GhostRiderEventSource.Directive);

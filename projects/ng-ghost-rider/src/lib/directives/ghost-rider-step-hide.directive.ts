@@ -10,6 +10,9 @@ export class GhostRiderStepHideDirective {
     private readonly _ghostRiderService: GhostRiderService,
   ) { }
 
+  /**
+   * If this directive is placed on an element and a tour is active, this method hide the current step but NOT 'end' the tour
+   */
   @HostListener('click')
   public hide(): void {
     if (this._ghostRiderService.activeTour) {

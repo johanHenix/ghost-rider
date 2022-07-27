@@ -6,7 +6,7 @@ import { GhostRiderEvent } from '../models/ghost-rider-step-event.model';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 /**
- * Directive to make an element a step in the tour.
+ * Directive to register an element a step in the tour.
  * 
  * @param ghostRiderStep - Config object to customize the step
  */
@@ -20,14 +20,25 @@ export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, 
     };
   }
 
+  /**
+   * Sets up how the 'step' should work in the tour
+   */
   public get ghostRiderStep(): GhostRiderStepConfig<T> {
     return this.config;
   }
 
+  /**
+   * Emits anytime there is a step event. ie: Start, Next, Back, Close, Complete...
+   * Please look at the 'model' => '../models/ghost-rider-step-event.model'
+   */
   @Output()
   public ghostRiderStepEvent: EventEmitter<GhostRiderEvent> = new EventEmitter();
 
-  public config!: GhostRiderStepConfig<T>;
+  public config: GhostRiderStepConfig<T>;
+
+  /**
+   * This is a subject to indicate when there a 'tour' is active or not.
+   */
   public active$: BehaviorSubject<boolean> = new BehaviorSubject(false as boolean);
 
   private readonly _subs: Subscription[] = [];

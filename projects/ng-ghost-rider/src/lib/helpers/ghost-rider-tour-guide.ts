@@ -4,6 +4,11 @@ export class GhostRiderTourGuide {
 	public activeStep: GhostRiderStep;
 	public currentStep: number = 0;
 
+	/**
+	 * 
+	 * @param tourNamespace A unique string for to scope a tour
+	 * @param steps List of 'Steps' to use for the tour
+	 */
 	constructor(
 		public readonly tourNamespace: string,
 		public readonly steps: GhostRiderStep[],
@@ -38,13 +43,6 @@ export class GhostRiderTourGuide {
 		} while (this.activeStep.hidden);
 
 		return this.activeStep;
-
-		// do {
-		// 	this.currentStep++;
-		// 	this.activeStep = this.steps[this.currentStep];
-		// } while (this.activeStep.hidden);
-
-		// return this.activeStep;
 	}
 
 	/**
@@ -75,13 +73,6 @@ export class GhostRiderTourGuide {
 		} while (this.activeStep.hidden);
 
 		return this.activeStep;
-
-		// do {
-		// 	this.currentStep--;
-		// 	this.activeStep = this.steps[this.currentStep];
-		// } while (this.activeStep.hidden);
-
-		// return this.activeStep;
 	}
 
 	/**
