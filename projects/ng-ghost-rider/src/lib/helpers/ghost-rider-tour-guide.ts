@@ -31,7 +31,9 @@ export class GhostRiderTourGuide {
 	 * Sets the active step to the next 'Parent' step that is visible
 	 */
 	public getNextStep(): GhostRiderStep {
+		// Start at whatever the 'active step is'
 		const startingStep: GhostRiderStep = this.activeStep;
+		// If there are sub steps, loop over them to find the next active sub step
 		do {
 			if (this.steps[this.currentStep + 1]) {
 				this.currentStep++;
@@ -41,6 +43,7 @@ export class GhostRiderTourGuide {
 			}
 		} while (this.activeStep.hidden);
 
+		// Use the first found step for the tour
 		return this.activeStep;
 	}
 
