@@ -1,6 +1,6 @@
 {
   "name": "ng-ghost-rider",
-  "version": "0.0.26-beta",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "Create guided tours in Angular",
   "author": {
