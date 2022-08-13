@@ -19,7 +19,7 @@
     "------------------- TOOLS -------------------": "",
     "sync-readme": "node tools/sync-readme.js"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^14.0.6",
     "@angular/cdk": "^14.0.4",
