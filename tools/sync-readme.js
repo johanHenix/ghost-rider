@@ -9,6 +9,6 @@ fs.copyFile(
 		if (err) {
 			throw err;
 		}
-		console.log(colors.green('README\'s are synced!'));
+		console.log(colors.green('README\'s are synced!') + ' ✅');
 	}
 );
