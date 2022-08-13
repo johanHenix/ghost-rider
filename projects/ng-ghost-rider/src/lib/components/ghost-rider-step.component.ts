@@ -90,12 +90,23 @@ export class GhostRiderStepComponent extends PopoverComponent {
 	 * This is the total number of tour steps registered in the tour
 	 */
 	public stepCount: number;
+
+	/**
+	 * Name to give the tour step
+	 */
 	public stepName: string;
+
 	/**
 	 * Flag for the last step
 	 */
 	public isLastStep: boolean;
+
+	/**
+	 * Flag if the 'Master / Overall' Tour has sub steps
+	 */
+
 	public hasSubSteps: boolean;
+
 	/**
 	 * Holds the details for the 'GhostRiderStepComponent' details prop
 	 */
