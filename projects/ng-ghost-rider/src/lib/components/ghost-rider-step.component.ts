@@ -103,8 +103,7 @@ export class GhostRiderStepComponent extends PopoverComponent {
 
 	/**
 	 * Flag if the 'Master / Overall' Tour has sub steps
-	 */
-
+	*/
 	public hasSubSteps: boolean;
 
 	/**
