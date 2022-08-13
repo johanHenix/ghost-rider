@@ -41,7 +41,7 @@ export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, 
    */
   public active$: BehaviorSubject<boolean> = new BehaviorSubject(false as boolean);
 
-  private readonly _subs: Subscription[] = [];
+  private readonly _subs: Subscription[] = []; // Make sure to unsubscribe when you use it 🤘🏻
 
   constructor(
     public readonly element: ElementRef<HTMLElement>,
