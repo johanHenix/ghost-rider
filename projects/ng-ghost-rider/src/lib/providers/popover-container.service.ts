@@ -14,6 +14,9 @@ export class GhostRiderRootPopoverContainer implements GhostRiderPopoverContaine
 		this._document = document;
 	}
 
+	/**
+	 * [ Implement me... ]
+	 */
 	public getBoundingClientRect(): DOMRect {
 		const width = this._document.documentElement.clientWidth;
 		const height = this._document.documentElement.clientHeight;
