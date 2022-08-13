@@ -414,6 +414,8 @@ export class GhostRiderService implements OnDestroy {
    * @param overlayRef The overlay element
    */
   private _buildWindow(rect: DOMRect, overlayRef: OverlayRef): void {
+    // TODO: Need to implement this in a FEATURE
+
     // if (this._tourGuide.activeStep.preventClicks && !this._uiMask) {
     //   // Make div to prevent actions
     //   this._uiMask = this._renderer.createElement('div');
@@ -452,6 +454,7 @@ export class GhostRiderService implements OnDestroy {
     const borderRadius = buffer;
     const distributionSize = buffer / 2;
 
+    // 'Safley' apply the styles to the UI
     if (overlayRef.backdropElement?.firstChild) {
       this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'position', 'absolute');
       this._renderer.setStyle(overlayRef.backdropElement.firstChild, 'background', 'white');

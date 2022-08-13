@@ -89,7 +89,7 @@ export class GhostRiderStepComponent extends PopoverComponent {
 	/**
 	 * This is the total number of tour steps registered in the tour
 	 */
-	public stepCount: number;
+	public stepCount: number; // TODO: make this 'readonly'?!?!
 
 	/**
 	 * Name to give the tour step
@@ -107,11 +107,14 @@ export class GhostRiderStepComponent extends PopoverComponent {
 	public hasSubSteps: boolean;
 
 	/**
+	 * Flag if this current step in the tour is a sub-step
+	 */
+	public readonly isSubStep: boolean;
+
+	/**
 	 * Holds the details for the 'GhostRiderStepComponent' details prop
 	 */
 	public details: GhostRiderStepConfig;
-
-	public readonly isSubStep: boolean;
 
 	constructor(
 		@Inject(GHOST_RIDER_NAVIGATION) private readonly _navigation: GhostRiderNavigation,
@@ -149,26 +152,44 @@ export class GhostRiderStepComponent extends PopoverComponent {
 		}
 	}
 
+	/**
+	 * Calls the next step
+	 */
 	public nextSubStep(): void {
 		this._navigation.nextSubStep(GhostRiderEventSource.Popover);
 	}
 
+	/**
+	 * Goes to the previous step
+	 */
 	public previousSubStep(): void {
 		this._navigation.previousSubStep(GhostRiderEventSource.Popover);
 	}
 
+	/**
+	 * Goes to a parent step from any sub step
+	 */
 	public goToParent(): void {
 		this._navigation.goToParent(GhostRiderEventSource.Popover);
 	}
 
+	/**
+	 * Goes to the previous step
+	 */
 	public back(): void {
 		this._navigation.back(GhostRiderEventSource.Popover);
 	}
 
+	/**
+	 * Ends the tour
+	 */
 	public close(): void {
 		this._navigation.close(GhostRiderEventSource.Popover);
 	}
 
+	/**
+	 * Closes the tour, but with a more descriptive event
+	  */
 	public complete(): void {
 		this._navigation.complete(GhostRiderEventSource.Popover);
 	}
