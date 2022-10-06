@@ -1,15 +1,15 @@
 <h1 align="center">
-<img valign="bottom" src="https://github.com/freddysilber/ghost-rider/blob/main/src/assets/images/ghost.svg" style="width: 40px;" width="40px"> Ghost Rider
+<img valign="bottom" src="https://github.com/ng-ghost-rider/ghost-rider/blob/main/src/assets/images/ghost.svg" style="width: 40px;" width="40px"> Ghost Rider
 </h1>
 <p align="center">A library for creating guided tours in angular. Ghost ride the whip!</p>
 <hr/>
 
 [![npm version](https://badge.fury.io/js/ng-ghost-rider.svg)](https://badge.fury.io/js/ng-ghost-rider)
-[![GitHub issues](https://img.shields.io/github/issues/freddysilber/ghost-rider)](https://github.com/freddysilber/ghost-rider/issues)
-[![GitHub license](https://img.shields.io/github/license/freddysilber/ghost-rider)](https://github.com/freddysilber/ghost-rider/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/ng-ghost-rider/ghost-rider)](https://github.com/ng-ghost-rider/ghost-rider/issues)
+[![GitHub license](https://img.shields.io/github/license/ng-ghost-rider/ghost-rider)](https://github.com/ng-ghost-rider/ghost-rider/blob/main/LICENSE)
 
 <p align="center">
-	<img src="https://github.com/freddysilber/ghost-rider/blob/main/assets/images/step.png"/>
+	<img src="https://github.com/ng-ghost-rider/ghost-rider/blob/main/assets/images/step.png"/>
 </p>
 
 ## Features
@@ -114,7 +114,7 @@ export class AppComponent {
 6. Enjoy the ride!
 
 ## Contributing
-Feel free to report any bugs / issues [here](https://github.com/freddysilber/ghost-rider/issues)
+Feel free to report any bugs / issues [here](https://github.com/ng-ghost-rider/ghost-rider/issues)
 
 ### Local Dev
 1. Fork and clone this repo
@@ -137,7 +137,7 @@ Run `ng test ng-ghost-rider` to execute the unit tests via [Karma](https://karma
 
 MIT License
 
-Copyright (c) 2022 Freddy Silber <freddy.silber@gmail.com> (https://freddysilber.github.io/)
+Copyright (c) 2022 Freddy Silber <freddy.silber@gmail.com> (https://ng-ghost-rider.github.io/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

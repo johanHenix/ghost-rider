@@ -11,13 +11,14 @@
     "------------------- GHOST RIDER -------------------": "",
     "ghost-rider:build": "cd projects/ng-ghost-rider && ng build ng-ghost-rider && cd ../../",
     "ghost-rider:publish": "cd dist/ng-ghost-rider && npm publish && cd ../../",
-    "publish": "npm-run-all sync-readme ghost-rider:build ghost-rider:publish",
+    "publish": "npm-run-all sync-readme patch-version ghost-rider:build ghost-rider:publish",
     "------------------- SCULLY -------------------": "",
     "scully-build": "npx scully --cf scully.ghost-rider.config.ts",
     "scully-serve": "npx scully serve",
     "scully": "scully --cf scully.ghost-rider.config.ts",
     "------------------- TOOLS -------------------": "",
-    "sync-readme": "node tools/sync-readme.js"
+    "sync-readme": "node tools/sync-readme.js",
+    "patch-version": "cd projects/ng-ghost-rider && npm version patch && cd ../../"
   },
   "private": false,
   "dependencies": {
