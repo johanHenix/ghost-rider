@@ -49,17 +49,26 @@ export class GhostRiderStepDirective<T = any> implements GhostRiderStepDetails, 
     private readonly _ghostRiderService: GhostRiderService,
   ) { }
 
+  /**
+   * Register a new step when this Directive is placed
+   */
   ngOnInit(): void {
     if (this.config.name && this.config.shouldRegister) {
       this._ghostRiderService.registerStep(this);
     }
   }
 
+  /**
+   * Clean up this step when destroyed
+   */
   ngOnDestroy(): void {
     if (this.config && this.config.name) {
       this._ghostRiderService.unregisterStep(this);
     }
 
+    /**
+     * Unsubscribe from all subs
+     */
     this._subs.forEach((sub) => sub.unsubscribe());
   }
 }

@@ -5,6 +5,9 @@ import { GhostRiderEventSource } from '../models/ghost-rider-step-event.model';
 import { GHOST_RIDER_NAVIGATION } from '../tokens/ghost-rider-navigation.token';
 import { PopoverComponent } from './popover.component';
 
+/**
+ * Component that renders the step that the user sees
+ */
 @Component({
 	selector: 'ghost-rider-step',
 	template: `
@@ -122,8 +125,11 @@ export class GhostRiderStepComponent extends PopoverComponent {
 	) {
 		super(cdr);
 
+		// Flag if the current step is a 'sub step'
 		this.isSubStep = !!this._navigation.tourGuide.activeStep.parent;
+		// Sets the name of the 'step'
 		this.stepName = this._navigation.tourGuide.activeStep.name;
+		// Flag if the current step has 'sub steps'
 		this.hasSubSteps = this._navigation.tourGuide.activeStep.hasSubSteps;
 
 		if (this.isSubStep) {
@@ -137,6 +143,7 @@ export class GhostRiderStepComponent extends PopoverComponent {
 			this.stepCount = this._navigation.tourGuide.steps.length;
 		}
 
+		// Set prop if this is the last step or not
 		this.isLastStep = this.stepIndex === this.stepCount - 1;
 	}
 
@@ -144,6 +151,9 @@ export class GhostRiderStepComponent extends PopoverComponent {
 		super.ngOnDestroy();
 	}
 
+	/**
+	 * Goes to the next step from 'this' current step
+	 */
 	public next(): void {
 		if (this.details.nextIsHide) {
 			this._navigation.hideStep();

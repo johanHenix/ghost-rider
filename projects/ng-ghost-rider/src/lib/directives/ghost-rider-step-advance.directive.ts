@@ -27,7 +27,9 @@ export class GhostRiderStepAdvanceDirective {
    */
   @HostListener('click', ['$event'])
   public advance(event: MouseEvent): void {
+    // Emit an event when the user clicks this step that has the 'advance' directive placed on the element
     this.ghostRiderStepAdvance.emit(event);
+    // Emits the 'type' of directive this was sourced from
     this._ghostRiderService.next(GhostRiderEventSource.Directive);
   }
 }
