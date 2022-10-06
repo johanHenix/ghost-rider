@@ -21,12 +21,23 @@ export enum GhostRiderEventType {
   Complete,
 }
 
+/**
+ * GhostRiderEventSource
+ */
 export enum GhostRiderEventSource {
   Directive,
   Popover,
   Manual,
 }
 
+/**
+ * GhostRiderEvent
+ * 
+ * Retains an object that can be used from external sources
+ * @param type - Type of event (next, back etc.)
+ * @param name - String for the event name (can be a custom name)
+ * @param source - Where the event was 'sourced' from (Directive, Popover, Manual etc.)
+ */
 export interface GhostRiderEvent {
   type: GhostRiderEventType | null;
   name: string;

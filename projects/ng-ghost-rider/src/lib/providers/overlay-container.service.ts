@@ -26,6 +26,9 @@ export class GhostRiderOverlayContainer extends OverlayContainer {
 	}
 }
 
+/**
+ * Provider for `GhostRiderOverlayContainer`
+ */
 export const GHOST_RIDER_OVERLAY_CONTAINER_PROVIDER: ExistingProvider = {
 	provide: OverlayContainer,
 	useExisting: GhostRiderOverlayContainer,

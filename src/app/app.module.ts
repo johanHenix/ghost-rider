@@ -1,10 +1,15 @@
 import { PortalModule } from '@angular/cdk/portal';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { GhostRiderModule } from 'ng-ghost-rider';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+
+// COMPONENTS
+import { AppComponent } from '../app/components/app/app.component';
 import { GithubCorner } from './components/github-corner/github-corner.component';
+
+// MODULES
+import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './modules/shared.module';
 
 const COMPONENTS = [
